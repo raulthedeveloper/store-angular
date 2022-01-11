@@ -18,12 +18,23 @@ import { StoreComponent } from './pages/store/store.component';
 import { ProductFormComponent } from './component/product-form/product-form.component';
 import { AdminTableComponent } from './components/admin-table/admin-table.component';
 import { FormModalComponent } from './components/form-modal/form-modal.component';
+import { CategoryUiComponent } from './components/category-ui/category-ui.component';
+import { ProductRowComponent } from './components/product-row/product-row.component';
+import { ProductCardComponent } from './components/product-card/product-card.component';
+import { CategoryCardComponent } from './components/category-card/category-card.component';
+import { StoreUiComponent } from './components/store-ui/store-ui.component';
+import { ProductDetailComponent } from './pages/product-detail/product-detail.component';
+import { StoreCategoryComponent } from './pages/store-category/store-category.component';
+import { CartComponent } from './pages/cart/cart.component';
 
 
 const appRoutes: Routes = [
   {path:"", component:HomeComponent},
   {path:"store", component:StoreComponent},
+  {path:"store/:category",component:StoreCategoryComponent},
+  {path:"store/:category/:id",component:ProductDetailComponent},
   {path:"products",component:ProductsComponent},
+  {path:"cart",component:CartComponent},
   {path:"categories",component:CategoriesComponent}
 ]
 
@@ -44,6 +55,14 @@ const appRoutes: Routes = [
     ProductFormComponent,
     AdminTableComponent,
     FormModalComponent,
+    CategoryUiComponent,
+    ProductRowComponent,
+    ProductCardComponent,
+    CategoryCardComponent,
+    StoreUiComponent,
+    ProductDetailComponent,
+    StoreCategoryComponent,
+    CartComponent,
  
   ],
   imports: [

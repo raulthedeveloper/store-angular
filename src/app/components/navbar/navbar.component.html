@@ -1,6 +1,6 @@
 
 <nav class="relative flex items-center justify-between sm:h-10 lg:justify-start m-5" aria-label="Global">
-    <div class="flex items-center flex-grow flex-shrink-0 lg:flex-grow-0">
+    <div class="flex items-center  flex-grow flex-shrink-0 lg:flex-grow-0">
       <div class="flex items-center justify-between w-full md:w-auto">
         <a href="#">
           <span class="sr-only">Workflow</span>
@@ -17,6 +17,9 @@
         </div>
       </div>
     </div>
+
+    
+
     <div class="hidden md:block md:ml-10 md:pr-4 md:space-x-8">
         <a [routerLink]="['/']" href="#" class="font-medium text-gray-500 hover:text-gray-900">Home</a>
 
@@ -26,7 +29,14 @@
 
       <a [routerLink]="['/products']" href="#" class="font-medium text-gray-500 hover:text-gray-900">Products</a>
 
-      
-      <a href="#" class="font-medium text-indigo-600 hover:text-indigo-500">Log in</a>
+     
     </div>
+
+    <div class="hidden float-right md:block md:ml-10 md:pr-4 md:space-x-8">
+    
+
+    <a [routerLink]="['/cart']" href="#" class="font-medium text-gray-500 hover:text-gray-900">Cart</a>
+    
+    <a href="#" class="font-medium text-indigo-600 hover:text-indigo-500">Log in</a>
+  </div>
   </nav>
