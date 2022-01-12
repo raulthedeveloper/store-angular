@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { DataService } from 'src/app/services/data.service';
+import { Category } from 'src/app/DataInterfaces';
 
 @Component({
   selector: 'app-category-ui',
@@ -6,10 +8,11 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./category-ui.component.scss']
 })
 export class CategoryUiComponent implements OnInit {
-
-  constructor() { }
+  categories: Category[] = [];
+  constructor(private dataService: DataService) { }
 
   ngOnInit(): void {
+  this.categories =  this.dataService.getCategories();
   }
 
 }
