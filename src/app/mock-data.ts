@@ -7,6 +7,8 @@ export const Products:Product[] = [
     catId:1,
     name:"macbook pro",
     description:"Apples professional Laptop",
+    image:"https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/mbp14-spacegray-select-202110?wid=904&hei=840&fmt=jpeg&qlt=80&.v=1632788573000",
+
     price:1220
 },
 {
@@ -14,6 +16,7 @@ export const Products:Product[] = [
     catId:1,
     name:"Lenovo Thinkpad",
     description:"Professional Windows Laptop",
+    image:"https://p1-ofp.static.pub/medias/bWFzdGVyfHJvb3R8MzI1MTkwfGltYWdlL3BuZ3xoZTQvaGU3LzExMDMzODkwMzU3Mjc4LnBuZ3wwZWQzZWU4OTAxNDI0NGM2ODVhMTc4MGU0MzA0ZDQyZWFkYjBmNjY5OGUwMjM4ZjU5OWVmZTE2NTEzYzU1YTQ3/lenovo-laptop-workstation-thinkpad-p15-15-subseries-hero.png",
     price:900
 },
 {
@@ -21,6 +24,8 @@ export const Products:Product[] = [
     catId:2,
     name:"Down Jacket",
     description:"Jacket with goose feathers",
+    image:"https://www.rei.com/media/e1d02698-67ed-4f11-af88-c54a84fd838b?size=576x768",
+
     price:120
 },
 {
@@ -28,6 +33,8 @@ export const Products:Product[] = [
     catId:3,
     name:"Screw Driver",
     description:"Premium stainless steel screw driver",
+    image:"https://cdn.pixabay.com/photo/2012/04/13/21/06/screwdriver-33634__480.png",
+
     price:20
 },
 {
@@ -35,6 +42,8 @@ export const Products:Product[] = [
     catId:4,
     name:"Milk",
     description:"Whole Milk fortified",
+    image:"https://www.meijer.com/content/dam/meijer/product/0004/12/5010/20/0004125010200_2_A1C1_0600.png",
+
     price:20
 }
 

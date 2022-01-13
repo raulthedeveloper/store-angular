@@ -1,4 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit,} from '@angular/core';
+import { DataService } from 'src/app/services/data.service';
+import { Product } from 'src/app/DataInterfaces';
 
 @Component({
   selector: 'app-store-ui',
@@ -6,10 +8,13 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./store-ui.component.scss']
 })
 export class StoreUiComponent implements OnInit {
+ products:Product[] = []
 
-  constructor() { }
+  constructor(private dataService: DataService) { }
 
   ngOnInit(): void {
+    this.products = this.dataService.getProducts();
+    console.log(this.dataService.getProducts())
   }
 
 }

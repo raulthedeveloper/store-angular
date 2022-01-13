@@ -3,6 +3,7 @@ export interface Product {
     catId?:number,
     name:string,
     description:string,
+    image:string,
     price:number
 }
 
