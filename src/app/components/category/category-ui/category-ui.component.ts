@@ -12,7 +12,8 @@ export class CategoryUiComponent implements OnInit {
   constructor(private dataService: DataService) { }
 
   ngOnInit(): void {
-  this.categories =  this.dataService.getCategories();
+    this.dataService.getCategories().subscribe((category) =>(this.categories = category));
+
   }
 
 }

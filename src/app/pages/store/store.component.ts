@@ -14,7 +14,7 @@ export class StoreComponent implements OnInit {
   constructor(private route:ActivatedRoute, private dataService: DataService ) { }
 
   ngOnInit(): void {
-    this.products = this.dataService.getProducts();
+    this.dataService.getProducts().subscribe((product) =>(this.products = product));
   }
 
 

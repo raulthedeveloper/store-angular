@@ -14,7 +14,7 @@ export class CategoryTableComponent implements OnInit {
   constructor(private dataService: DataService) { }
 
   ngOnInit(): void {
-    this.category = this.dataService.getCategories();
+    this.dataService.getCategories().subscribe((category) =>(this.category = category));
     console.log(this.dataService.getCategories())
   }
 

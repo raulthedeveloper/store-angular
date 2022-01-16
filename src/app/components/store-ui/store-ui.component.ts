@@ -13,7 +13,7 @@ export class StoreUiComponent implements OnInit {
   constructor(private dataService: DataService) { }
 
   ngOnInit(): void {
-    this.products = this.dataService.getProducts();
+    this.dataService.getProducts().subscribe((product) =>(this.products = product));
     console.log(this.dataService.getProducts())
   }
 
