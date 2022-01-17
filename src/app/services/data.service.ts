@@ -32,15 +32,6 @@ private apiUrlCategories = "https://localhost:44309/api/categories";
     
   }
 
-  addCategory(category: Category):Observable<Category>{
-    return this.http.post<Category>(this.apiUrlCategories, category, httpOptions)
-  }
-
-  addProduct(product: Product):Observable<Product>{
-    console.log(product)
-    return this.http.post<Product>(this.apiUrlProducts, product, httpOptions)
-  }
-
   getCategories():Observable<Category[]>{
     const categories = of(Categories);
     if(environment.testApi){
@@ -52,6 +43,38 @@ private apiUrlCategories = "https://localhost:44309/api/categories";
     
     
   }
+
+  addCategory(category: Category):Observable<Category>{
+    return this.http.post<Category>(this.apiUrlCategories, category, httpOptions)
+  }
+
+  addProduct(product: Product):Observable<Product>{
+    console.log(product)
+    return this.http.post<Product>(this.apiUrlProducts, product, httpOptions)
+  }
+
+  deleteProduct(id:number):Observable<Product>{
+    let url = `${this.apiUrlProducts}/${id}`
+    return this.http.delete<Product>(url)
+  }
+
+  deleteCategory(id:number):Observable<Category>{
+    let url = `${this.apiUrlCategories}/${id}`
+    return this.http.delete<Category>(url)
+  }
+
+  
+
+  editProduct(id:number,product:Product):Observable<Product>{
+    let url = `${this.apiUrlCategories}/${id}`
+    return this.http.put<Product>(url,product,httpOptions)
+  }
+
+  editCategory(id:number,category:Category):Observable<Category>{
+    let url = `${this.apiUrlCategories}/${id}`
+    return this.http.put<Category>(url,category,httpOptions)
+  }
+
 
 
 }

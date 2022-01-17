@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, Output,EventEmitter } from '@angular/core';
 import { DataService } from 'src/app/services/data.service';
 import { Category, Product } from 'src/app/DataInterfaces';
 
@@ -9,13 +9,31 @@ import { Category, Product } from 'src/app/DataInterfaces';
   styleUrls: ['./category-table.component.scss']
 })
 export class CategoryTableComponent implements OnInit {
-  category:Category[] = []
+  @Output() onRefreshList: EventEmitter<Category> = new EventEmitter();
+
+  @Input() category:Category[] = []
 
   constructor(private dataService: DataService) { }
 
   ngOnInit(): void {
-    this.dataService.getCategories().subscribe((category) =>(this.category = category));
-    console.log(this.dataService.getCategories())
+   
+    
   }
+  
+   delete(id:any){
+    let choice = window.confirm("Are you sure you want to delete this product");
 
+    if(choice){
+     this.dataService.deleteCategory(id).subscribe();
+     this.onRefreshList.emit();
+    }
+    
+    
+   }
+
+   
+
+   edit(id:any){
+     console.log(`The id of the category is ${id}`)
+   }
 }

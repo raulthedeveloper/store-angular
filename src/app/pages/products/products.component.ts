@@ -10,16 +10,20 @@ import { DataService } from 'src/app/services/data.service';
 })
 export class ProductsComponent implements OnInit {
   
-  product:Product[] = [];
+  products:Product[] = [];
   constructor(private dataService: DataService) { }
 
   ngOnInit(): void {
-   
+   this.dataService.getProducts().subscribe((product) =>(this.products = product));
+  }
+
+  refreshList(): void {
+    this.dataService.getProducts().subscribe(() =>(this.ngOnInit()));
   }
 
   addProduct(product:Product){
     console.log(product);
-    this.dataService.addProduct(product).subscribe((product) => (this.product.push()))
+    this.dataService.addProduct(product).subscribe(() => (this.ngOnInit()))
   }
 
 }

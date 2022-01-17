@@ -1,5 +1,7 @@
 import { Component, OnInit, Output, EventEmitter, Input } from '@angular/core';
 import { Category, Product } from 'src/app/DataInterfaces';
+import { DataService } from 'src/app/services/data.service';
+
 import {FormControl} from '@angular/forms';
 
 interface category{
@@ -9,11 +11,11 @@ interface category{
 }
 
 interface product{
-  categoryId:number | string | undefined,
+  catId:any,
   name:string,
   description:string,
   image:string,
-  price:number | string | undefined
+  price:any
 }
 
 
@@ -23,14 +25,17 @@ interface product{
   
 })
 export class PostModalComponent   {
+  constructor(private dataService: DataService){}
 @Output() onAddCategory: EventEmitter<Category> = new EventEmitter();
 @Output() onAddProduct: EventEmitter<Product> = new EventEmitter();
-
-  categoryId:number |string | undefined;
+  
+  categoryId:any;
   name:string | undefined;
   description:string | undefined;
   image:string | undefined;
-  price: number | string | undefined;
+  price: any
+
+ 
   
   @Input() title: string | undefined;
   @Input() type: string | undefined;
@@ -41,6 +46,14 @@ export class PostModalComponent   {
 
   toggleModal():void{
     this.showModal = !this.showModal;
+    if(this.type == 'product'){
+
+      this.dataService.getProducts().subscribe();
+    }
+    else{
+      this.dataService.getCategories().subscribe();
+    }
+    
   }
 
   
@@ -64,11 +77,11 @@ export class PostModalComponent   {
     }
 
     const newProduct:product = {
-      categoryId: this.categoryId,
+      catId: parseInt(this.categoryId),
       name:this.name,
       description:this.description,
       image: this.image,
-      price:this.price
+      price: parseInt(this.price)
     }
 
     if(this.type == "category"){

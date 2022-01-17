@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { Category } from 'src/app/DataInterfaces';
 import { DataService } from 'src/app/services/data.service';
 
@@ -9,14 +9,22 @@ import { DataService } from 'src/app/services/data.service';
   styleUrls: ['./categories.component.scss']
 })
 export class CategoriesComponent implements OnInit {
+
  category:Category[] = [];
   constructor(private dataService: DataService) { }
 
   ngOnInit(): void {
+    this.dataService.getCategories().subscribe((category) =>(this.category = category));
   }
 
   addCategory(category:Category){
-    console.log(category);
-    this.dataService.addCategory(category).subscribe((category) => (this.category.push()))
+    this.dataService.addCategory(category).subscribe(() => (this.ngOnInit()))
+    
+    
+  }
+
+  refreshList(): void {
+    console.log("refresh list is working")
+    this.dataService.getCategories().subscribe(() =>(this.ngOnInit()));
   }
 }

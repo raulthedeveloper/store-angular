@@ -42,10 +42,10 @@
                             </td>
                             
                             <td class="py-4 px-6 text-sm font-medium text-right whitespace-nowrap">
-                                <a href="#" class="text-blue-600 hover:text-blue-900 dark:text-blue-500 dark:hover:underline">Edit</a>
+                                <button (click)="edit(item.id)"  class="text-blue-600 hover:text-blue-900 dark:text-blue-500 dark:hover:underline">Edit</button>
                             </td>
                             <td class="py-4 px-6 text-sm font-medium text-right whitespace-nowrap">
-                                <a href="#" class="text-blue-600 hover:text-blue-900 dark:text-blue-500 dark:hover:underline">Delete</a>
+                                <button  (click)="delete(item.id)" class="text-blue-600 hover:text-blue-900 dark:text-blue-500 dark:hover:underline">Delete</button>
                             </td>
                         </tr>
                         <!-- Product 2 -->

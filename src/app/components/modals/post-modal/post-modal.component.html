@@ -23,7 +23,7 @@
 <form #postForm="ngForm" (ngSubmit)="submitForm()" class="space-y-3"  method="post">
     <div *ngIf="type == 'product'">
         <label for="name" class="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300">Category Id</label>
-        <input ngModel [(ngModel)]="categoryId"  type="text" name="name" id="name" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white"  required>
+        <input ngModel [(ngModel)]="categoryId"  type="number" name="name" id="category" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white"  required>
     </div>
     <div>
         <label for="name" class="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300">Name</label>
