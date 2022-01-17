@@ -1,4 +1,5 @@
 import { NgModule } from '@angular/core';
+import { FormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
 import {HttpClient, HttpClientModule} from '@angular/common/http';
 import {RouterModule, Routes} from '@angular/router'; 
@@ -23,6 +24,7 @@ import { CartComponent } from './pages/cart/cart.component';
 import { ProductsTableComponent } from './components/product/products-table/products-table.component';
 import { CategoryTableComponent } from './components/category/category-table/category-table.component';
 import { CategoryRowComponent } from './components/category/category-row/category-row.component';
+import { PostModalComponent } from './components/modals/post-modal/post-modal.component';
 
 
 const appRoutes: Routes = [
@@ -57,13 +59,15 @@ const appRoutes: Routes = [
     ProductsTableComponent,
     CategoryTableComponent,
     CategoryRowComponent,
+    PostModalComponent,
  
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     RouterModule.forRoot(appRoutes),
-    HttpClientModule
+    HttpClientModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -5,6 +5,12 @@ import { Products, Categories } from '../mock-data';
 import {Product,Category} from "../DataInterfaces";
 import { environment } from 'src/environments/environment';
 
+const httpOptions = {
+  headers:new HttpHeaders({
+    'Content-Type': 'application/json'
+  })
+}
+
 @Injectable({
   providedIn: 'root'
 })
@@ -24,6 +30,15 @@ private apiUrlCategories = "https://localhost:44309/api/categories";
     }
     
     
+  }
+
+  addCategory(category: Category):Observable<Category>{
+    return this.http.post<Category>(this.apiUrlCategories, category, httpOptions)
+  }
+
+  addProduct(product: Product):Observable<Product>{
+    console.log(product)
+    return this.http.post<Product>(this.apiUrlProducts, product, httpOptions)
   }
 
   getCategories():Observable<Category[]>{
