@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { DataService } from 'src/app/services/data.service';
-import { Product } from 'src/app/DataInterfaces';
+import { Product,Category } from 'src/app/DataInterfaces';
 
 
 @Component({
@@ -11,10 +11,13 @@ import { Product } from 'src/app/DataInterfaces';
 })
 export class StoreComponent implements OnInit {
   products:Product[] = [];
+  category:Category[] = [];
   constructor(private route:ActivatedRoute, private dataService: DataService ) { }
 
   ngOnInit(): void {
     this.dataService.getProducts().subscribe((product) =>(this.products = product));
+    this.dataService.getCategories().subscribe((category) =>(this.category = category));
+
   }
 
 

@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Product } from 'src/app/DataInterfaces';
+import { Product,Category } from 'src/app/DataInterfaces';
 import { DataService } from 'src/app/services/data.service';
 
 
@@ -11,10 +11,13 @@ import { DataService } from 'src/app/services/data.service';
 export class ProductsComponent implements OnInit {
   
   products:Product[] = [];
+  category:Category[] = [];
   constructor(private dataService: DataService) { }
 
   ngOnInit(): void {
    this.dataService.getProducts().subscribe((product) =>(this.products = product));
+   this.dataService.getCategories().subscribe((category) =>(this.category = category));
+
   }
 
   refreshList(): void {

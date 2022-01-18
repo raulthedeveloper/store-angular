@@ -2,7 +2,6 @@ import { Component, OnInit, Output, EventEmitter, Input } from '@angular/core';
 import { Category, Product } from 'src/app/DataInterfaces';
 import { DataService } from 'src/app/services/data.service';
 
-import {FormControl} from '@angular/forms';
 
 interface category{
   name:string,
@@ -36,7 +35,7 @@ export class PostModalComponent   {
   price: any
 
  
-  
+  @Input() category:Category[] | undefined;
   @Input() title: string | undefined;
   @Input() type: string | undefined;
   @Input() edit: boolean | undefined;

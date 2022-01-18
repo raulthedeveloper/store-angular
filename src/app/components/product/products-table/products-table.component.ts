@@ -19,9 +19,7 @@ export class ProductsTableComponent implements OnInit {
     constructor(private dataService: DataService) { }
   
      ngOnInit(): void {
-
-      
-      
+ 
       
     }
 

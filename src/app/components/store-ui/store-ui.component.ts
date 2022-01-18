@@ -1,4 +1,4 @@
-import { Component, OnInit,} from '@angular/core';
+import { Component, OnInit,Input} from '@angular/core';
 import { DataService } from 'src/app/services/data.service';
 import { Product } from 'src/app/DataInterfaces';
 
@@ -8,13 +8,13 @@ import { Product } from 'src/app/DataInterfaces';
   styleUrls: ['./store-ui.component.scss']
 })
 export class StoreUiComponent implements OnInit {
- products:Product[] = []
+ @Input() products:Product[] = []
+ @Input() title:string | undefined;
 
   constructor(private dataService: DataService) { }
 
   ngOnInit(): void {
-    this.dataService.getProducts().subscribe((product) =>(this.products = product));
-    console.log(this.dataService.getProducts())
+   
   }
 
 }
