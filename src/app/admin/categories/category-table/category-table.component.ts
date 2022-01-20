@@ -1,6 +1,6 @@
 import { Component, OnInit, Input, Output,EventEmitter } from '@angular/core';
 import { DataService } from 'src/app/services/data.service';
-import { Category, Product } from 'src/app/DataInterfaces';
+import { Category } from 'src/app/DataInterfaces';
 
 
 @Component({

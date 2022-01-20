@@ -1,4 +1,4 @@
-import {Product, Category} from './DataInterfaces';
+import {Product, Category, Customer, Sale, Cart} from './DataInterfaces';
 
 
 export const Products:Product[] = [
@@ -8,8 +8,8 @@ export const Products:Product[] = [
     name:"macbook pro",
     description:"Apples professional Laptop",
     image:"https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/mbp14-spacegray-select-202110?wid=904&hei=840&fmt=jpeg&qlt=80&.v=1632788573000",
-
-    price:1220
+     price:1220,
+     quantity:30
 },
 {
     id:2,
@@ -17,7 +17,8 @@ export const Products:Product[] = [
     name:"Lenovo Thinkpad",
     description:"Professional Windows Laptop",
     image:"https://p1-ofp.static.pub/medias/bWFzdGVyfHJvb3R8MzI1MTkwfGltYWdlL3BuZ3xoZTQvaGU3LzExMDMzODkwMzU3Mjc4LnBuZ3wwZWQzZWU4OTAxNDI0NGM2ODVhMTc4MGU0MzA0ZDQyZWFkYjBmNjY5OGUwMjM4ZjU5OWVmZTE2NTEzYzU1YTQ3/lenovo-laptop-workstation-thinkpad-p15-15-subseries-hero.png",
-    price:900
+    price:900,
+    quantity:30
 },
 {
     id:3,
@@ -26,7 +27,8 @@ export const Products:Product[] = [
     description:"Jacket with goose feathers",
     image:"https://www.rei.com/media/e1d02698-67ed-4f11-af88-c54a84fd838b?size=576x768",
 
-    price:120
+    price:120,
+    quantity:30
 },
 {
     id:4,
@@ -35,7 +37,8 @@ export const Products:Product[] = [
     description:"Premium stainless steel screw driver",
     image:"https://cdn.pixabay.com/photo/2012/04/13/21/06/screwdriver-33634__480.png",
 
-    price:20
+    price:20,
+    quantity:30
 },
 {
     id:4,
@@ -44,7 +47,8 @@ export const Products:Product[] = [
     description:"Whole Milk fortified",
     image:"https://www.meijer.com/content/dam/meijer/product/0004/12/5010/20/0004125010200_2_A1C1_0600.png",
 
-    price:20
+    price:20,
+    quantity:30
 },
 {
     id:5,
@@ -53,7 +57,8 @@ export const Products:Product[] = [
     description:"Apples professional Laptop",
     image:"https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/mbp14-spacegray-select-202110?wid=904&hei=840&fmt=jpeg&qlt=80&.v=1632788573000",
 
-    price:1220
+    price:1220,
+    quantity:30
 },
 {
     id:5,
@@ -61,7 +66,8 @@ export const Products:Product[] = [
     name:"Lenovo Thinkpad carbon",
     description:"Professional Windows Laptop",
     image:"https://p1-ofp.static.pub/medias/bWFzdGVyfHJvb3R8MzI1MTkwfGltYWdlL3BuZ3xoZTQvaGU3LzExMDMzODkwMzU3Mjc4LnBuZ3wwZWQzZWU4OTAxNDI0NGM2ODVhMTc4MGU0MzA0ZDQyZWFkYjBmNjY5OGUwMjM4ZjU5OWVmZTE2NTEzYzU1YTQ3/lenovo-laptop-workstation-thinkpad-p15-15-subseries-hero.png",
-    price:900
+    price:900,
+    quantity:30
 },
 {
     id:6,
@@ -70,7 +76,8 @@ export const Products:Product[] = [
     description:"Jacket with goose feathers",
     image:"https://www.rei.com/media/e1d02698-67ed-4f11-af88-c54a84fd838b?size=576x768",
 
-    price:120
+    price:120,
+    quantity:30
 },
 {
     id:7,
@@ -79,7 +86,8 @@ export const Products:Product[] = [
     description:"Jacket with goose feathers",
     image:"https://www.rei.com/media/e1d02698-67ed-4f11-af88-c54a84fd838b?size=576x768",
 
-    price:120
+    price:120,
+    quantity:30
 },
 {
     id:8,
@@ -88,7 +96,8 @@ export const Products:Product[] = [
     description:"Jacket with goose feathers",
     image:"https://www.rei.com/media/e1d02698-67ed-4f11-af88-c54a84fd838b?size=576x768",
 
-    price:120
+    price:120,
+    quantity:30
 },
 {
     id:9,
@@ -97,7 +106,8 @@ export const Products:Product[] = [
     description:"Premium stainless steel screw driver",
     image:"https://cdn.pixabay.com/photo/2012/04/13/21/06/screwdriver-33634__480.png",
 
-    price:20
+    price:20,
+    quantity:30
 },
 {
     id:10,
@@ -106,7 +116,8 @@ export const Products:Product[] = [
     description:"Premium stainless steel screw driver",
     image:"https://cdn.pixabay.com/photo/2012/04/13/21/06/screwdriver-33634__480.png",
 
-    price:20
+    price:20,
+    quantity:30
 },
 {
     id:11,
@@ -115,7 +126,8 @@ export const Products:Product[] = [
     description:"Whole Milk fortified",
     image:"https://www.meijer.com/content/dam/meijer/product/0004/12/5010/20/0004125010200_2_A1C1_0600.png",
 
-    price:20
+    price:20,
+    quantity:30
 },
 {
     id:12,
@@ -124,7 +136,8 @@ export const Products:Product[] = [
     description:"Whole Milk fortified",
     image:"https://www.meijer.com/content/dam/meijer/product/0004/12/5010/20/0004125010200_2_A1C1_0600.png",
 
-    price:20
+    price:20,
+    quantity:30
 },
 {
     id:13,
@@ -133,7 +146,8 @@ export const Products:Product[] = [
     description:"Whole Milk fortified",
     image:"https://www.meijer.com/content/dam/meijer/product/0004/12/5010/20/0004125010200_2_A1C1_0600.png",
 
-    price:20
+    price:20,
+    quantity:30
 },
 
 ]
@@ -169,4 +183,95 @@ export const Categories:Category[] = [
         description:"Food for your furry friends",
         image:"https://upload.wikimedia.org/wikipedia/commons/1/13/Supermarkt.jpg"
     },
+]
+
+export const Customers:Customer[] = [
+    {
+        id: 1,
+        first_name: "Raul",
+        last_name: "Rodriguez"
+    },
+    {
+        id: 2,
+        first_name: "Norma",
+        last_name: "Hendricks"
+    },
+    {
+        id: 3,
+        first_name: "Stephany",
+        last_name: "Vasquez"
+    },
+    {
+        id: 4,
+        first_name: "Miguel",
+        last_name: "Jimenez"
+    }
+]
+
+export const Sales:Sale[] = [
+    {
+        id: 1,
+        prodId: 1,
+        price: 200
+    },
+    {
+        id: 2,
+        prodId: 3,
+        price: 400
+    },
+    {
+        id: 4,
+        prodId: 2,
+        price: 400
+    },
+    {
+        id: 5,
+        prodId: 3,
+        price: 400
+    }
+]
+
+export const Carts:Cart[] = [
+    {
+        id: 1,
+        custId: 2,
+        prodId: 3,
+        quantity: 10
+    },
+    {
+        id: 2,
+        custId: 2,
+        prodId: 1,
+        quantity: 11
+    },
+    {
+        id: 3,
+        custId: 2,
+        prodId: 4,
+        quantity: 9
+    },
+    {
+        id: 4,
+        custId: 1,
+        prodId: 4,
+        quantity: 9
+    },
+    {
+        id: 5,
+        custId: 1,
+        prodId: 1,
+        quantity: 9
+    },
+    {
+        id: 6,
+        custId: 1,
+        prodId: 1,
+        quantity: 9
+    },
+    {
+        id: 7,
+        custId: 3,
+        prodId: 4,
+        quantity: 2
+    }
 ]

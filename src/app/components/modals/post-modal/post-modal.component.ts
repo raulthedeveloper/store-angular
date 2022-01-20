@@ -14,7 +14,8 @@ interface product{
   name:string,
   description:string,
   image:string,
-  price:any
+  price:any,
+  quantity:number
 }
 
 
@@ -32,7 +33,8 @@ export class PostModalComponent   {
   name:string | undefined;
   description:string | undefined;
   image:string | undefined;
-  price: any
+  price: any;
+  quantity : any
 
  
   @Input() category:Category[] | undefined;
@@ -80,7 +82,8 @@ export class PostModalComponent   {
       name:this.name,
       description:this.description,
       image: this.image,
-      price: parseInt(this.price)
+      price: parseInt(this.price),
+      quantity:parseInt(this.quantity)
     }
 
     if(this.type == "category"){

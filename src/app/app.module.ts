@@ -21,10 +21,14 @@ import { StoreUiComponent } from './components/store-ui/store-ui.component';
 import { ProductDetailComponent } from './pages/product-detail/product-detail.component';
 import { StoreCategoryComponent } from './pages/store-category/store-category.component';
 import { CartComponent } from './pages/cart/cart.component';
-import { ProductsTableComponent } from './components/product/products-table/products-table.component';
-import { CategoryTableComponent } from './components/category/category-table/category-table.component';
+import { ProductsTableComponent } from './admin/products/products-table/products-table.component';
+import { CategoryTableComponent } from './admin/categories/category-table/category-table.component';
 import { CategoryRowComponent } from './components/category/category-row/category-row.component';
 import { PostModalComponent } from './components/modals/post-modal/post-modal.component';
+import { AdminCustomersComponent } from './pages/admin-customers/admin-customers.component';
+import { TableComponent } from './components/table/table.component';
+import { NavDropdownComponent } from './components/layout/nav-dropdown/nav-dropdown.component';
+import { AdminSalesComponent } from './pages/admin-sales/admin-sales.component';
 
 
 const appRoutes: Routes = [
@@ -32,9 +36,11 @@ const appRoutes: Routes = [
   {path:"store", component:StoreComponent},
   {path:"store/:category",component:StoreCategoryComponent},
   {path:"store/:category/:id",component:ProductDetailComponent},
-  {path:"products",component:ProductsComponent},
+  {path:"admin-products",component:ProductsComponent},
   {path:"cart",component:CartComponent},
-  {path:"categories",component:CategoriesComponent}
+  {path:"admin-categories",component:CategoriesComponent},
+  {path:"admin-customers",component:AdminCustomersComponent},
+  {path:"admin-sales",component:AdminSalesComponent}
 ]
 
 @NgModule({
@@ -60,6 +66,10 @@ const appRoutes: Routes = [
     CategoryTableComponent,
     CategoryRowComponent,
     PostModalComponent,
+    AdminCustomersComponent,
+    TableComponent,
+    NavDropdownComponent,
+    AdminSalesComponent,
  
   ],
   imports: [

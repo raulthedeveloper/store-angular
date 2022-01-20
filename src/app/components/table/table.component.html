@@ -1,0 +1,54 @@
+
+
+
+<div class="flex flex-col">
+    <div class="overflow-x-auto sm:-mx-6 lg:-mx-8">
+        <div class="inline-block py-2 min-w-full sm:px-6 lg:px-8">
+            <div class="overflow-hidden shadow-md sm:rounded-lg">
+                <table class="min-w-full">
+                    <thead class="bg-gray-100 dark:bg-gray-700">
+                        <tr >
+                            <th scope="col" *ngFor="let item of tableHeader[0]" class="py-3 px-6 text-xs font-medium tracking-wider text-left text-gray-700 uppercase dark:text-gray-400">
+                                {{item}}
+                            </th>
+                            <!-- use loop to generate table headers -->
+
+                          
+                            
+                            <th scope="col" class="relative py-3 px-6">
+                                <span class="sr-only">Edit</span>
+                            </th>
+                            <th scope="col" class="relative py-3 px-6">
+                                <span class="sr-only">Delete</span>
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody *ngFor="let item of tableValue; let i = index">
+
+                        <!-- use loop to generate table rows -->
+
+                         <tr  class="odd:bg-white even:bg-gray-50 border-b odd:dark:bg-gray-800 even:dark:bg-gray-700 dark:border-gray-600">
+                            <td *ngFor="let value of item; let i = index"  class="py-4 px-6 text-sm font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                                {{value != null ? value : "null"}}
+                            </td>
+                           
+
+                            <td class="py-4 px-6 text-sm font-medium text-right whitespace-nowrap">
+                                <button   class="text-blue-600 hover:text-blue-900 dark:text-blue-500 dark:hover:underline">Edit</button>
+                            </td>
+                            <td class="py-4 px-6 text-sm font-medium text-right whitespace-nowrap">
+                                <button  class="text-blue-600 hover:text-blue-900 dark:text-blue-500 dark:hover:underline">Delete</button>
+                            </td>
+                         </tr>
+
+
+                         
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
