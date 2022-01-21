@@ -1,6 +1,7 @@
 import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { Category } from 'src/app/DataInterfaces';
-import { DataService } from 'src/app/services/data.service';
+import { GetService } from 'src/app/services/get/get.service';
+import { PostService } from 'src/app/services/post/post.service';
 
 
 @Component({
@@ -11,20 +12,19 @@ import { DataService } from 'src/app/services/data.service';
 export class CategoriesComponent implements OnInit {
 
  category:Category[] = [];
-  constructor(private dataService: DataService) { }
+  constructor(private getService: GetService, private postService : PostService) { }
 
   ngOnInit(): void {
-    this.dataService.getCategories().subscribe((category) =>(this.category = category));
+    this.getService.getCategories().subscribe((category) =>(this.category = category));
   }
 
   addCategory(category:Category){
-    this.dataService.addCategory(category).subscribe(() => (this.ngOnInit()))
+    this.postService.addCategory(category).subscribe(() => (this.ngOnInit()))
     
     
   }
 
   refreshList(): void {
-    console.log("refresh list is working")
-    this.dataService.getCategories().subscribe(() =>(this.ngOnInit()));
+    this.getService.getCategories().subscribe(() =>(this.ngOnInit()));
   }
 }

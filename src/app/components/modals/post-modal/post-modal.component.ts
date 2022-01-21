@@ -1,6 +1,6 @@
 import { Component, OnInit, Output, EventEmitter, Input } from '@angular/core';
 import { Category, Product } from 'src/app/DataInterfaces';
-import { DataService } from 'src/app/services/data.service';
+import { GetService } from "../../../services/get/get.service"
 
 
 interface category{
@@ -25,7 +25,7 @@ interface product{
   
 })
 export class PostModalComponent   {
-  constructor(private dataService: DataService){}
+  constructor(private getService: GetService){}
 @Output() onAddCategory: EventEmitter<Category> = new EventEmitter();
 @Output() onAddProduct: EventEmitter<Product> = new EventEmitter();
   
@@ -49,10 +49,10 @@ export class PostModalComponent   {
     this.showModal = !this.showModal;
     if(this.type == 'product'){
 
-      this.dataService.getProducts().subscribe();
+      this.getService.getProducts().subscribe();
     }
     else{
-      this.dataService.getCategories().subscribe();
+      this.getService.getCategories().subscribe();
     }
     
   }

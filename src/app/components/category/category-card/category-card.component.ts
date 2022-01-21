@@ -9,6 +9,7 @@ export class CategoryCardComponent implements OnInit {
   @Input() name:string | undefined;
   @Input() description:string | undefined;
   @Input() image:string | undefined
+  @Input () id: string | undefined
 
   constructor() { }
 

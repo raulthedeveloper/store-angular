@@ -29,18 +29,23 @@ import { AdminCustomersComponent } from './pages/admin-customers/admin-customers
 import { TableComponent } from './components/table/table.component';
 import { NavDropdownComponent } from './components/layout/nav-dropdown/nav-dropdown.component';
 import { AdminSalesComponent } from './pages/admin-sales/admin-sales.component';
+import { LocationsComponent } from './pages/locations/locations.component';
+import { ListComponent } from './components/layout/list/list.component';
+import { AdminLocationsComponent } from './pages/admin/admin-locations/admin-locations.component';
 
 
 const appRoutes: Routes = [
   {path:"", component:HomeComponent},
   {path:"store", component:StoreComponent},
+  {path:"locations", component:LocationsComponent},
   {path:"store/:category",component:StoreCategoryComponent},
   {path:"store/:category/:id",component:ProductDetailComponent},
   {path:"admin-products",component:ProductsComponent},
   {path:"cart",component:CartComponent},
   {path:"admin-categories",component:CategoriesComponent},
   {path:"admin-customers",component:AdminCustomersComponent},
-  {path:"admin-sales",component:AdminSalesComponent}
+  {path:"admin-sales",component:AdminSalesComponent},
+  {path:"admin-locations",component:AdminLocationsComponent}
 ]
 
 @NgModule({
@@ -70,6 +75,9 @@ const appRoutes: Routes = [
     TableComponent,
     NavDropdownComponent,
     AdminSalesComponent,
+    LocationsComponent,
+    ListComponent,
+    AdminLocationsComponent,
  
   ],
   imports: [

@@ -1,6 +1,6 @@
 import { Component, OnInit, Input, Output,EventEmitter } from '@angular/core';
-import { DataService } from 'src/app/services/data.service';
 import { Category } from 'src/app/DataInterfaces';
+import { DeleteService } from 'src/app/services/delete/delete.service';
 
 
 @Component({
@@ -13,7 +13,7 @@ export class CategoryTableComponent implements OnInit {
 
   @Input() category:Category[] = []
 
-  constructor(private dataService: DataService) { }
+  constructor(private deleteService: DeleteService) { }
 
   ngOnInit(): void {
    
@@ -24,7 +24,7 @@ export class CategoryTableComponent implements OnInit {
     let choice = window.confirm("Are you sure you want to delete this product");
 
     if(choice){
-     this.dataService.deleteCategory(id).subscribe();
+     this.deleteService.deleteCategory(id).subscribe();
      this.onRefreshList.emit();
     }
     

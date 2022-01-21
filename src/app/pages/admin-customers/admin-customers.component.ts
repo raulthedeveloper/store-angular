@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { DataService } from 'src/app/services/data.service';
+import { GetService } from 'src/app/services/get/get.service';
 
 @Component({
   selector: 'app-admin-customers',
@@ -11,10 +11,10 @@ export class AdminCustomersComponent implements OnInit {
   data:any = [];
   
 
-  constructor(private dataService:DataService) { }
+  constructor(private getService:GetService) { }
 
   ngOnInit(): void {
-    this.dataService.getCustomers().subscribe((customers) =>(this.data = customers))
+    this.getService.getCustomers().subscribe((customers) =>(this.data = customers))
   }
 
  
