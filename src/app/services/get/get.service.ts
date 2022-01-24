@@ -2,11 +2,13 @@
 import { Injectable } from '@angular/core';
 import {Observable,of} from 'rxjs';
 import {HttpClient} from '@angular/common/http'
-import {Product,Category, Customer} from "../../DataInterfaces";
+import {Product,Category, Customer, Sale, Location} from "../../DataInterfaces";
 import { environment } from 'src/environments/environment';
 import { url } from '../ServiceUtils';
 
 import { Products, Categories } from '../../Mock-Data/mock-data';
+import { Sales } from 'src/app/Mock-Data/Sale-Mock-Data';
+import { Locations } from 'src/app/Mock-Data/Location-Mock-Data';
 import { Customers } from '../../Mock-Data/Customer-Mock-Data';
 
 
@@ -26,6 +28,27 @@ export class GetService {
       return this.http.get<Product[]>(url.apiUrlProducts);
     }
     
+  }
+
+  getSales():Observable<Sale[]>{
+    
+    if(environment.testApi){
+       return of(Sales);
+    }
+    else{
+      return this.http.get<Sale[]>(url.apiUrlSales);
+    }
+    
+  }
+
+  getLocations():Observable<Location[]>{
+    
+    if(environment.testApi){
+       return of(Locations);
+    }
+    else{
+      return this.http.get<Location[]>(url.apiUrlSales);
+    }
     
   }
 

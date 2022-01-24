@@ -34,3 +34,20 @@ export interface Cart {
     quantity:number
 }
 
+export interface Location {
+    id?:number,
+    address:string
+}
+
+export interface StoreHour{
+    id:number,
+    locationId:number,
+    sunday:string,
+    monday:string,
+    tuesday:string,
+    wednesday:string,
+    thursday:string,
+    friday:string,
+    saterday:string,
+}
+

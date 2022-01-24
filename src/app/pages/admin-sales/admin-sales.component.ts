@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { GetService } from 'src/app/services/get/get.service';
+
 
 @Component({
   selector: 'app-admin-sales',
@@ -7,9 +9,13 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AdminSalesComponent implements OnInit {
 
-  constructor() { }
+  constructor(public getService: GetService) { }
+
+  data:any[] = []
 
   ngOnInit(): void {
+    this.getService.getSales().subscribe((customers) =>(this.data = customers))
+
   }
 
 }

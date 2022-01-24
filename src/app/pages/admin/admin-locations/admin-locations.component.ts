@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { GetService } from 'src/app/services/get/get.service';
 
 @Component({
   selector: 'app-admin-locations',
@@ -7,9 +8,11 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AdminLocationsComponent implements OnInit {
 
-  constructor() { }
+  constructor(private getService: GetService) { }
+  data:any[] = []
 
   ngOnInit(): void {
+    this.getService.getLocations().subscribe((locations) =>(this.data = locations))
   }
 
 }
