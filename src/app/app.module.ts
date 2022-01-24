@@ -32,6 +32,7 @@ import { AdminSalesComponent } from './pages/admin-sales/admin-sales.component';
 import { LocationsComponent } from './pages/locations/locations.component';
 import { ListComponent } from './components/layout/list/list.component';
 import { AdminLocationsComponent } from './pages/admin/admin-locations/admin-locations.component';
+import { MiniCategorySelectorComponent } from './components/category/mini-category-selector/mini-category-selector.component';
 
 
 const appRoutes: Routes = [
@@ -78,6 +79,7 @@ const appRoutes: Routes = [
     LocationsComponent,
     ListComponent,
     AdminLocationsComponent,
+    MiniCategorySelectorComponent,
  
   ],
   imports: [
