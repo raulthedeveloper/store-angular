@@ -1,4 +1,4 @@
-import {Product, Category, Customer, Sale, Cart} from './DataInterfaces';
+import {Product, Category, Customer, Sale,} from '../DataInterfaces';
 
 
 export const Products:Product[] = [
@@ -30,16 +30,7 @@ export const Products:Product[] = [
     price:120,
     quantity:30
 },
-{
-    id:4,
-    catId:3,
-    name:"Screw Driver",
-    description:"Premium stainless steel screw driver",
-    image:"https://cdn.pixabay.com/photo/2012/04/13/21/06/screwdriver-33634__480.png",
 
-    price:20,
-    quantity:30
-},
 {
     id:4,
     catId:4,
@@ -60,15 +51,7 @@ export const Products:Product[] = [
     price:1220,
     quantity:30
 },
-{
-    id:5,
-    catId:1,
-    name:"Lenovo Thinkpad carbon",
-    description:"Professional Windows Laptop",
-    image:"https://p1-ofp.static.pub/medias/bWFzdGVyfHJvb3R8MzI1MTkwfGltYWdlL3BuZ3xoZTQvaGU3LzExMDMzODkwMzU3Mjc4LnBuZ3wwZWQzZWU4OTAxNDI0NGM2ODVhMTc4MGU0MzA0ZDQyZWFkYjBmNjY5OGUwMjM4ZjU5OWVmZTE2NTEzYzU1YTQ3/lenovo-laptop-workstation-thinkpad-p15-15-subseries-hero.png",
-    price:900,
-    quantity:30
-},
+
 {
     id:6,
     catId:2,
@@ -208,70 +191,7 @@ export const Customers:Customer[] = [
     }
 ]
 
-export const Sales:Sale[] = [
-    {
-        id: 1,
-        prodId: 1,
-        price: 200
-    },
-    {
-        id: 2,
-        prodId: 3,
-        price: 400
-    },
-    {
-        id: 4,
-        prodId: 2,
-        price: 400
-    },
-    {
-        id: 5,
-        prodId: 3,
-        price: 400
-    }
-]
 
-export const Carts:Cart[] = [
-    {
-        id: 1,
-        custId: 2,
-        prodId: 3,
-        quantity: 10
-    },
-    {
-        id: 2,
-        custId: 2,
-        prodId: 1,
-        quantity: 11
-    },
-    {
-        id: 3,
-        custId: 2,
-        prodId: 4,
-        quantity: 9
-    },
-    {
-        id: 4,
-        custId: 1,
-        prodId: 4,
-        quantity: 9
-    },
-    {
-        id: 5,
-        custId: 1,
-        prodId: 1,
-        quantity: 9
-    },
-    {
-        id: 6,
-        custId: 1,
-        prodId: 1,
-        quantity: 9
-    },
-    {
-        id: 7,
-        custId: 3,
-        prodId: 4,
-        quantity: 2
-    }
-]
+
+
+

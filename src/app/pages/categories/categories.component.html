@@ -1,4 +1,6 @@
 <app-post-modal (onAddCategory)="addCategory($event)" type="category" [edit]="false" title="Create Category"></app-post-modal>
-<app-category-table (onRefreshList)="refreshList()" [category]="category" ></app-category-table>
+<!-- <app-category-table (onRefreshList)="refreshList()" [category]="category" ></app-category-table> -->
+
+<app-table [data]="category" ></app-table>
 
  

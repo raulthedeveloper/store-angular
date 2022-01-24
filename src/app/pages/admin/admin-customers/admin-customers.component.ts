@@ -8,13 +8,17 @@ import { GetService } from 'src/app/services/get/get.service';
 })
 export class AdminCustomersComponent implements OnInit {
 
-  data:any = [];
+  data:any[] = [];
   
 
   constructor(private getService:GetService) { }
 
   ngOnInit(): void {
     this.getService.getCustomers().subscribe((customers) =>(this.data = customers))
+  }
+
+  ngAfterContentChecked(){
+    console.log(this.data)
   }
 
  

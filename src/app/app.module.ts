@@ -25,7 +25,7 @@ import { ProductsTableComponent } from './admin/products/products-table/products
 import { CategoryTableComponent } from './admin/categories/category-table/category-table.component';
 import { CategoryRowComponent } from './components/category/category-row/category-row.component';
 import { PostModalComponent } from './components/modals/post-modal/post-modal.component';
-import { AdminCustomersComponent } from './pages/admin-customers/admin-customers.component';
+import { AdminCustomersComponent } from './pages/admin/admin-customers/admin-customers.component';
 import { TableComponent } from './components/table/table.component';
 import { NavDropdownComponent } from './components/layout/nav-dropdown/nav-dropdown.component';
 import { AdminSalesComponent } from './pages/admin-sales/admin-sales.component';

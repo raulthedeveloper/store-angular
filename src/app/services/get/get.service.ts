@@ -2,10 +2,12 @@
 import { Injectable } from '@angular/core';
 import {Observable,of} from 'rxjs';
 import {HttpClient} from '@angular/common/http'
-import { Products, Categories,Customers } from '../../mock-data';
 import {Product,Category, Customer} from "../../DataInterfaces";
 import { environment } from 'src/environments/environment';
 import { url } from '../ServiceUtils';
+
+import { Products, Categories } from '../../Mock-Data/mock-data';
+import { Customers } from '../../Mock-Data/Customer-Mock-Data';
 
 
 @Injectable({
