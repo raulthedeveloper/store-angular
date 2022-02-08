@@ -1,4 +1,4 @@
-<app-mini-category-selector></app-mini-category-selector>
+<app-mini-category-selector [categories]="category"></app-mini-category-selector>
 
 <div *ngFor="let item of category;">
     <app-store-ui  [products]="products" title="{{item.name}}"></app-store-ui>

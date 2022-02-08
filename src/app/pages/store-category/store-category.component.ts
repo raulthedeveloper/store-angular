@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { GetService } from 'src/app/services/get/get.service';
+import { ProductByCat } from 'src/app/DataInterfaces';
 
 
 @Component({
@@ -12,9 +13,14 @@ export class StoreCategoryComponent implements OnInit {
 
   public categoryRoute : any
 
-  constructor(private route: ActivatedRoute) { }
+  products:ProductByCat[] = [];
+
+
+  constructor(private route: ActivatedRoute, private getService: GetService) { }
 
   ngOnInit(): void {
+    this.getService.getProductsByCat(Number(this.route.snapshot.paramMap.get('category'))).subscribe((product) =>(this.products = product));
+
     this.categoryRoute = this.route.snapshot.paramMap.get('category');
     
   }

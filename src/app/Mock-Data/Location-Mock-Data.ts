@@ -20,8 +20,8 @@ export const StoreHours: StoreHour[] = [{
     saterday: "10am - 5pm",
   },
   {
-    id: 1,
-    locationId: 1,
+    id: 2,
+    locationId: 2,
     sunday: "10am - 5pm",
     monday: "8am - 9pm",
     tuesday: "8am - 9pm",

@@ -51,3 +51,15 @@ export interface StoreHour{
     saterday:string,
 }
 
+export interface ProductByCat{
+    id: number,
+    catId: number,
+    category: null,
+    name: string,
+    description: string,
+    image:string ,
+    price: number,
+    quantity: number
+}
+
+    

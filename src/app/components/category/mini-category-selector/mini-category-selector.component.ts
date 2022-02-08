@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
+import {Category} from '../../../DataInterfaces'
 
 @Component({
   selector: 'app-mini-category-selector',
@@ -7,6 +8,8 @@ import { Component, OnInit } from '@angular/core';
 })
 export class MiniCategorySelectorComponent implements OnInit {
 
+  @Input() categories:Category[] | undefined;
+  
   constructor() { }
 
   ngOnInit(): void {

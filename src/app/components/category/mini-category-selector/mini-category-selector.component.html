@@ -1,37 +1,16 @@
 
 <h2 class="">Shop By Category</h2>
-<div class="flex justify-center flex-wrap">
-  <a href="">
-    <div class="text-center m-2">
-      <img class="h-32 w-32 m-3 rounded-full" src="https://i.gadgets360cdn.com/large/ps5_review_full-3_1612247461981.jpg?downsize=950:*" alt="">
-      <span >PlayStation</span>
-    </div>
-  </a>
+<div  class="flex justify-center flex-wrap">
+  <div *ngFor="let item of categories;">
+    <a [routerLink]="[ item.id]">
+      <div class="text-center m-2">
+        <img class="h-32 w-32 m-3 rounded-full" src="{{item.image}}" alt="{{item.name}}">
+        <span >{{item.name}}</span>
+      </div>
+    </a>
+  </div>
+ 
     
-  <a href="">
-    <div class="text-center m-2">
-      <img class="h-32 w-32 m-3 rounded-full" src="https://i.gadgets360cdn.com/large/ps5_review_full-3_1612247461981.jpg?downsize=950:*" alt="">
-      <span >PlayStation</span>
-    </div>
-  </a>
-    
-  <a href="">
-    <div class="text-center m-2">
-      <img class="h-32 w-32 m-3 rounded-full" src="https://i.gadgets360cdn.com/large/ps5_review_full-3_1612247461981.jpg?downsize=950:*" alt="">
-      <span >PlayStation</span>
-    </div>
-  </a>
-  <a href="">
-    <div class="text-center m-2">
-      <img class="h-32 w-32 m-3 rounded-full" src="https://i.gadgets360cdn.com/large/ps5_review_full-3_1612247461981.jpg?downsize=950:*" alt="">
-      <span >PlayStation</span>
-    </div>
-  </a>
-  <a href="">
-    <div class="text-center m-2">
-      <img class="h-32 w-32 m-3 rounded-full" src="https://i.gadgets360cdn.com/large/ps5_review_full-3_1612247461981.jpg?downsize=950:*" alt="">
-      <span >PlayStation</span>
-    </div>
-  </a>
+  
     
   </div>
