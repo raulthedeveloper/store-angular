@@ -1,5 +1,5 @@
 import { Component, OnInit, Output, EventEmitter, Input } from '@angular/core';
-import { Category, Product } from 'src/app/DataInterfaces';
+import { Category, Product, Customer, Sale } from 'src/app/DataInterfaces';
 import { GetService } from "../../../services/get/get.service"
 
 
@@ -28,8 +28,17 @@ export class PostModalComponent   {
   constructor(private getService: GetService){}
 @Output() onAddCategory: EventEmitter<Category> = new EventEmitter();
 @Output() onAddProduct: EventEmitter<Product> = new EventEmitter();
+@Output() onAddCustomer: EventEmitter<Customer> = new EventEmitter();
+@Output() onAddSale: EventEmitter<Sale> = new EventEmitter();
+@Output() onAddLocation: EventEmitter<Location> = new EventEmitter();
+
+
+
   
   categoryId:any;
+  firstName:string | undefined;
+  lastName:string | undefined;
+
   name:string | undefined;
   description:string | undefined;
   image:string | undefined;
@@ -47,23 +56,46 @@ export class PostModalComponent   {
 
   toggleModal():void{
     this.showModal = !this.showModal;
-    if(this.type == 'product'){
+    
 
-      this.getService.getProducts().subscribe();
-    }
-    else{
-      this.getService.getCategories().subscribe();
+    switch(this.type){
+      case "product":
+        this.getService.getProducts().subscribe();
+        break;
+      case "category":
+        this.getService.getCategories().subscribe();
+        break;
+      case "sale":
+        this.getService.getSales().subscribe();
+        break;
+      case "customer":
+          this.getService.getCustomers().subscribe();
+          break;
+       case "location":
+            this.getService.getLocations().subscribe();
+            break;
+       
     }
     
   }
 
-  
+  // toggleModal():void{
+  //   this.showModal = !this.showModal;
+  //   if(this.type == 'product'){
+
+  //     this.getService.getProducts().subscribe();
+  //   }
+  //   else{
+  //     this.getService.getCategories().subscribe();
+  //   }
+    
+  // }
 
   submitForm():void{
 
     
 
-    if(!this.name || !this.description || !this.image){
+    if(!this.name || !this.description || !this.image || !this.firstName || !this.lastName){
       alert("Please make sure all fields are filled out")
       return 
     }
@@ -86,11 +118,26 @@ export class PostModalComponent   {
       quantity:parseInt(this.quantity)
     }
 
-    if(this.type == "category"){
-      this.onAddCategory.emit(newCategory)
+    const newCustomer:Customer = {
+      first_name:this.firstName,
+      last_name:this.lastName
     }
-    else{
-      this.onAddProduct.emit(newProduct)
+
+   
+
+    switch(this.type){
+      case "product":
+        this.onAddCategory.emit(newProduct);
+        break;
+      case "category":
+        this.onAddCategory.emit(newCategory)
+        break;
+      
+      case "customer":
+        this.onAddCustomer.emit(newCustomer)
+          break;
+       
+        
     }
     
 

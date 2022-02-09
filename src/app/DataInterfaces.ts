@@ -22,9 +22,9 @@ export interface Sale {
 }
 
 export interface Customer{
-     id?:number,
-    first_name:string,
-    last_name:string
+     id?:number | undefined,
+    first_name:string  | undefined,
+    last_name:string  | undefined
 }
 
 export interface Cart {

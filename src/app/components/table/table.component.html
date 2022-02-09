@@ -1,9 +1,12 @@
-
 <div class="flex flex-col">
     <div class="overflow-x-auto sm:-mx-6 lg:-mx-8">
         <div class="inline-block py-2 min-w-full sm:px-6 lg:px-8">
             <div class="overflow-hidden shadow-md sm:rounded-lg">
-                <table class="min-w-full">
+                <div>
+                    <h1 class="font-bold text-5xl text-center" *ngIf="data.length == 0">No Data</h1>
+
+                </div>
+                <table  class="min-w-full">
                     <thead class="bg-gray-100 dark:bg-gray-700">
                         <tr >
                             <th scope="col" *ngFor="let item of tableHeader" class="py-3 px-6 text-xs font-medium tracking-wider text-left text-gray-700 uppercase dark:text-gray-400">
@@ -35,8 +38,10 @@
                             </td>
 
                                 <td *ngIf="images.length > 0" class="py-4 px-6 text-sm font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                                    
-                                    <img style="height: 75px; width: 75px;" src="{{images[i]}}" alt="">
+                                    <a target="__blank" href="{{images[i]}}">
+                                        <img style="height: 75px; width: 200px;" src="{{images[i]}}" alt="">
+
+                                    </a>
                                 </td> 
                                
                            

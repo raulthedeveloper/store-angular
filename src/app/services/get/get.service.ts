@@ -30,6 +30,10 @@ export class GetService {
     
   }
 
+  getProductById(id:number):Observable<Product>{
+    return this.http.get<Product>(`${url.apiUrlProducts}/${id}`);
+  }
+
   getProductsByCat(id:number):Observable<ProductByCat[]>{
     return this.http.get<ProductByCat[]>(url.apiUrlProductsByCat + id);
   }
@@ -61,7 +65,7 @@ export class GetService {
       return of(Categories);
     }
     else{
-      return this.http.get<Product[]>(url.apiUrlCategories);
+      return this.http.get<Category[]>(url.apiUrlCategories);
     }
     
   }

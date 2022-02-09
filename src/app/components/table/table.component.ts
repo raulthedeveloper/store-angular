@@ -1,5 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
 
+
 @Component({
   selector: 'app-table',
   templateUrl: './table.component.html',
@@ -15,7 +16,10 @@ export class TableComponent implements OnInit {
   constructor() { }
 
   ngOnInit(): void {
-    
+
+  }
+
+  ngOnChanges(){
     this.data.forEach((element:any) => {
       Object.keys(element).forEach(e =>{
         if( e == "image"){
@@ -24,7 +28,6 @@ export class TableComponent implements OnInit {
 
           //also remove them from array
           delete element.image
-          console.log(element.image)
 
          }
       })
@@ -32,23 +35,24 @@ export class TableComponent implements OnInit {
     });
 
     this.setData(this.data);
+  }	
 
-  }
 
-  setData(data:any){
-    console.log(data)
+ 
 
-    data.forEach((element : any) => {
-     
+  async setData(data:any | null){
+   await data.forEach((element : any | null) => {
         this.tableValue.push(Object.values(element))
       
     });
   
+    data.length  == 0 ? null : this.tableHeader.push(...Object.keys(await data[0]));
     
-   this.tableHeader.push(...Object.keys(data[0]))
-  
+
+
     
   }
+  
 
 
 

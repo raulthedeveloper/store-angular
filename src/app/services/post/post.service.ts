@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import {Observable,of} from 'rxjs';
 import {HttpClient} from '@angular/common/http'
-import {Product,Category, Customer} from "../../DataInterfaces";
+import {Product,Category, Customer,Sale} from "../../DataInterfaces";
 import { url, httpOptions } from '../ServiceUtils';
 
 
@@ -16,6 +16,14 @@ export class PostService {
 
   addCategory(category: Category):Observable<Category>{
     return this.http.post<Category>(url.apiUrlCategories, category, httpOptions)
+  }
+
+  addCustomer(customers:Customer):Observable<Customer>{
+    return this.http.post<Customer>(url.apiUrlCustomers, customers, httpOptions)
+  }
+
+  addSales(sale:Sale):Observable<Sale>{
+    return this.http.post<Sale>(url.apiUrlSales, sale, httpOptions)
   }
 
   addProduct(product: Product):Observable<Product>{
