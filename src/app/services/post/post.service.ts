@@ -30,4 +30,10 @@ export class PostService {
 
     return this.http.post<Product>(url.apiUrlProducts, product, httpOptions)
   }
+
+  addLocation(data: Location):Observable<Location>{
+
+    return this.http.post<Location>(url.apiUrlLocation, data, httpOptions)
+  }
+  
 }

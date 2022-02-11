@@ -2,13 +2,12 @@
 import { Injectable } from '@angular/core';
 import {Observable,of} from 'rxjs';
 import {HttpClient} from '@angular/common/http'
-import {Product,Category, Customer, Sale, Location,  ProductByCat } from "../../DataInterfaces";
+import {Product,Category, Customer, Sale, Location,  ProductByCat, UnitedStates } from "../../DataInterfaces";
 import { environment } from 'src/environments/environment';
 import { url } from '../ServiceUtils';
 
 import { Products, Categories } from '../../Mock-Data/mock-data';
 import { Sales } from 'src/app/Mock-Data/Sale-Mock-Data';
-import { Locations } from 'src/app/Mock-Data/Location-Mock-Data';
 import { Customers } from '../../Mock-Data/Customer-Mock-Data';
 
 
@@ -51,12 +50,14 @@ export class GetService {
 
   getLocations():Observable<Location[]>{
     
-    if(environment.testApi){
-       return of(Locations);
-    }
-    else{
-      return this.http.get<Location[]>(url.apiUrlSales);
-    }
+      return this.http.get<Location[]>(url.apiUrlLocation);
+    
+  }
+
+  getUnitedState():Observable<UnitedStates[]>{
+    
+      return this.http.get<UnitedStates[]>(url.apiUrlUnitedStates);
+  
     
   }
 

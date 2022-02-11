@@ -7,7 +7,9 @@ export const url = {
  apiUrlProductsByCat:"https://localhost:44332/Products/ProductByCateogry?id=",
  apiUrlCategories : "https://localhost:44332/api/Categories",
  apiUrlCustomers : "https://localhost:44332/api/Customers",
- apiUrlSales : "https://localhost:44332/api/Sales"
+ apiUrlSales : "https://localhost:44332/api/Sales",
+ apiUrlLocation:"https://localhost:44332/api/Location",
+ apiUrlUnitedStates:"https://localhost:44332/api/UnitedStates"
 
 }
 

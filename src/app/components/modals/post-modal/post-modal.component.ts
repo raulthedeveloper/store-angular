@@ -1,5 +1,5 @@
 import { Component, OnInit, Output, EventEmitter, Input } from '@angular/core';
-import { Category, Product, Customer, Sale } from 'src/app/DataInterfaces';
+import { Category, Product, Customer, Sale, UnitedStates } from 'src/app/DataInterfaces';
 import { GetService } from "../../../services/get/get.service"
 
 
@@ -45,6 +45,13 @@ export class PostModalComponent   {
   price: any;
   quantity : any
 
+  address:string | undefined;
+  city:string | undefined;
+  state:string | undefined;
+  postalCode:string | number | undefined;
+
+  unitedState:UnitedStates[] | undefined
+
  
   @Input() category:Category[] | undefined;
   @Input() title: string | undefined;
@@ -54,102 +61,89 @@ export class PostModalComponent   {
 
   showModal:boolean = false;
 
+
+  ngOnInit(): void {
+    
+     this.getService.getUnitedState().subscribe((data) =>(this.unitedState = data))
+
+  }
+
   toggleModal():void{
     this.showModal = !this.showModal;
     
 
-    switch(this.type){
-      case "product":
-        this.getService.getProducts().subscribe();
-        break;
-      case "category":
-        this.getService.getCategories().subscribe();
-        break;
-      case "sale":
-        this.getService.getSales().subscribe();
-        break;
-      case "customer":
-          this.getService.getCustomers().subscribe();
-          break;
-       case "location":
-            this.getService.getLocations().subscribe();
-            break;
-       
-    }
+
     
   }
 
-  // toggleModal():void{
-  //   this.showModal = !this.showModal;
-  //   if(this.type == 'product'){
-
-  //     this.getService.getProducts().subscribe();
-  //   }
-  //   else{
-  //     this.getService.getCategories().subscribe();
-  //   }
-    
-  // }
+ 
 
   submitForm():void{
 
     
-
-    if(!this.name || !this.description || !this.image || !this.firstName || !this.lastName){
-      alert("Please make sure all fields are filled out")
-      return 
-    }
-
-   
-
-    const newCategory:category = {
-      name: this.name,
-      description:this.description,
-      image: this.image
-      
-    }
-
-    const newProduct:product = {
-      catId: parseInt(this.categoryId),
-      name:this.name,
-      description:this.description,
-      image: this.image,
-      price: parseInt(this.price),
-      quantity:parseInt(this.quantity)
-    }
-
-    const newCustomer:Customer = {
-      first_name:this.firstName,
-      last_name:this.lastName
-    }
+    // Prevent empty fields
+    
 
    
 
     switch(this.type){
       case "product":
-        this.onAddCategory.emit(newProduct);
+        const newProduct:any = {
+          catId: parseInt(this.categoryId),
+          name:this.name,
+          description:this.description,
+          image: this.image,
+          price: parseInt(this.price),
+          quantity:parseInt(this.quantity)
+        }
+        this.onAddProduct.emit(newProduct);
         break;
       case "category":
+        const newCategory:any = {
+          name: this.name,
+          description:this.description,
+          image: this.image
+          
+        }
         this.onAddCategory.emit(newCategory)
         break;
       
       case "customer":
+        const newCustomer:Customer = {
+          first_name:this.firstName,
+          last_name:this.lastName
+        }
         this.onAddCustomer.emit(newCustomer)
           break;
-       
+
+          case "location":
+            const newLocation:any = {
+              address:this.address,
+              city:this.city,
+              state:this.state,
+              postalCode:Number(this.postalCode)
+            }
+            console.log(newLocation)
+             this.onAddLocation.emit(newLocation)
+              break;
         
     }
     
 
-    this.name = "";
-    this.description = "";
-    this.image = "";
-
-    if(this.type == "product"){
-      this.categoryId = ""
-      this.price = ""
-    }
     
+
+    
+    
+  }
+
+  clearFields():void{
+    this.firstName=""
+    this.lastName=""
+    this.name=""
+    this.description=""
+    this.image=""
+    this.price=""
+    this.quantity =""
   }
 
   

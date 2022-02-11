@@ -1,1 +1,4 @@
-<app-table [data]="data"></app-table>
+
+<app-post-modal (onAddLocation)="addLocation($event)" type="location" [edit]="false" title="Add Location"></app-post-modal>
+
+<app-table [data]="data" type="location"></app-table>

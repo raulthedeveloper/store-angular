@@ -1,4 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
+import { Router } from '@angular/router';
+import { DeleteService } from 'src/app/services/delete/delete.service';
 
 
 @Component({
@@ -9,14 +11,17 @@ import { Component, OnInit, Input } from '@angular/core';
 export class TableComponent implements OnInit {
 
   @Input() data:any[] = []
+  @Input() type:string | undefined
+
   tableHeader:any[] = []
   tableValue:any[] = []
    images:string[] = []
+  currentRoute:string | undefined;
 
-  constructor() { }
+  constructor(private router : Router,private deletesService:DeleteService ) { }
 
   ngOnInit(): void {
-
+    this.currentRoute = this.router.url
   }
 
   ngOnChanges(){
@@ -38,11 +43,20 @@ export class TableComponent implements OnInit {
   }	
 
 
+  delete(id:number):void{
+    switch(this.type){
+      case "location":
+        alert("you deleted item with id:" + id)
+      this.deletesService.deleteLocation(id).subscribe();
+      
+    }
+    console.log("delete id:" + id)
+  }
  
 
   async setData(data:any | null){
    await data.forEach((element : any | null) => {
-        this.tableValue.push(Object.values(element))
+        this.tableValue.push(Object.values(element).map(String))
       
     });
   

@@ -1,16 +1,22 @@
 export interface Product {
     id?:number,
     catId?:number,
-    name:string,
+    name:string | undefined,
     description:string,
     image:string,
     price:number,
     quantity:number
 }
 
+export interface UnitedStates{
+    id?:number,
+    stateCode:string,
+    stateName:string
+}
+
 export interface Category {
     id?:number,
-    name:string,
+    name:string | undefined,
     description:string,
     image:string
 }
@@ -36,7 +42,10 @@ export interface Cart {
 
 export interface Location {
     id?:number,
-    address:string
+    address:string,
+    city:string,
+    state:string,
+    postalCode:number
 }
 
 export interface StoreHour{

@@ -3,10 +3,7 @@ import {
   StoreHour
 } from "../DataInterfaces"
 
-export const Locations: Location[] = [{
-  id: 1,
-  address: "dfdf",
-}]
+
 
 export const StoreHours: StoreHour[] = [{
     id: 1,

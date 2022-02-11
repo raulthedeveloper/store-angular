@@ -45,9 +45,28 @@
         </select>
     </div>
 
+    <div *ngIf="type == 'location'">
+      <label for="name" class="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300">Address</label>
+      <input  ngModel [(ngModel)]="address"  type="text" name="name" id="name" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white"  required>
+
+      <label for="name" class="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300">City</label>
+      <input  ngModel [(ngModel)]="city"  type="text" name="name" id="name" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white"  required>
+
+      <label for="name" class="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300">State</label>
+      <select class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white" [(ngModel)]="state"   name="category" id="category" required>
+        <option value="" disabled selected >select state</option>
+
+        <option *ngFor="let item of unitedState;" value="{{item.stateName}}">{{item.stateName}}</option>
+      </select>
+
+      <label for="name" class="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300">Postal Code / Zip Code</label>
+      <input  ngModel [(ngModel)]="postalCode"  type="text" name="name" id="name" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white"  required>
+
+    </div>
+
     <div *ngIf="type =='product' || type == 'category'">
         <label for="name" class="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300">Name</label>
-        <input ngModel [(ngModel)]="name"  type="text" name="name" id="name" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white"  required>
+        <input  ngModel [(ngModel)]="name"  type="text" name="name" id="name" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white"  required>
 
 
         <label for="description" class="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300">Description</label>
