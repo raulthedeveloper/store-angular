@@ -1,6 +1,9 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input,Output,EventEmitter } from '@angular/core';
 import { Router } from '@angular/router';
 import { DeleteService } from 'src/app/services/delete/delete.service';
+import {StateSharingService} from "../../services/state-sharing.service"
+
+
 
 
 @Component({
@@ -10,18 +13,25 @@ import { DeleteService } from 'src/app/services/delete/delete.service';
 })
 export class TableComponent implements OnInit {
 
+
+
   @Input() data:any[] = []
   @Input() type:string | undefined
+  @Output() onDelete: EventEmitter<any> = new EventEmitter();
+
+  toggle:boolean | undefined;
 
   tableHeader:any[] = []
   tableValue:any[] = []
    images:string[] = []
   currentRoute:string | undefined;
 
-  constructor(private router : Router,private deletesService:DeleteService ) { }
+  constructor(private router : Router,private deletesService:DeleteService, private stateSharing: StateSharingService ) { }
 
   ngOnInit(): void {
     this.currentRoute = this.router.url
+    this.stateSharing.currentToggle.subscribe(toggle => this.toggle = toggle)
+
   }
 
   ngOnChanges(){
@@ -36,40 +46,49 @@ export class TableComponent implements OnInit {
 
          }
       })
-     
+
     });
 
     this.setData(this.data);
-  }	
-
+  }
 
   delete(id:number):void{
-    switch(this.type){
-      case "location":
-        alert("you deleted item with id:" + id)
-      this.deletesService.deleteLocation(id).subscribe();
-      
+    if(confirm('Are you sure you want to delete')){
+      this.onDelete.emit(id)
     }
-    console.log("delete id:" + id)
   }
- 
+
+  edit(id:number):void{
+    // alert("your id is" + id)
+    // Activate modal with values
+    this.stateSharing.toggleModal(true,true)
+
+    this.data.forEach(e => {
+      if(e.id == id){
+        this.stateSharing.dataForEdit(e)
+      }
+    })
+    //Add edit emitters
+  }
+
+
 
   async setData(data:any | null){
    await data.forEach((element : any | null) => {
         this.tableValue.push(Object.values(element).map(String))
-      
+
     });
-  
+
     data.length  == 0 ? null : this.tableHeader.push(...Object.keys(await data[0]));
-    
 
 
-    
+
+
   }
-  
 
 
 
-  
+
+
 
 }

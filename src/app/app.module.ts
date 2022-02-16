@@ -1,4 +1,5 @@
 import { NgModule } from '@angular/core';
+import { LayoutModule } from './layout/layout.module';
 import { FormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
 import {HttpClient, HttpClientModule} from '@angular/common/http';
@@ -33,7 +34,7 @@ import { LocationsComponent } from './pages/locations/locations.component';
 import { ListComponent } from './components/layout/list/list.component';
 import { AdminLocationsComponent } from './pages/admin/admin-locations/admin-locations.component';
 import { MiniCategorySelectorComponent } from './components/category/mini-category-selector/mini-category-selector.component';
-
+import { NotFoundComponent } from './layout/not-found/not-found.component';
 
 const appRoutes: Routes = [
   {path:"", component:HomeComponent},
@@ -46,7 +47,8 @@ const appRoutes: Routes = [
   {path:"admin-categories",component:CategoriesComponent},
   {path:"admin-customers",component:AdminCustomersComponent},
   {path:"admin-sales",component:AdminSalesComponent},
-  {path:"admin-locations",component:AdminLocationsComponent}
+  {path:"admin-locations",component:AdminLocationsComponent},
+  {path:"**", component:NotFoundComponent}
 ]
 
 @NgModule({
@@ -87,7 +89,8 @@ const appRoutes: Routes = [
     AppRoutingModule,
     RouterModule.forRoot(appRoutes),
     HttpClientModule,
-    FormsModule
+    FormsModule,
+    LayoutModule
   ],
   providers: [],
   bootstrap: [AppComponent]

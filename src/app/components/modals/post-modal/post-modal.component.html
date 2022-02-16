@@ -18,17 +18,42 @@
         </div>
         <!--body-->
         <div class="relative p-6 flex-auto">
-         
+
 
 <form #postForm="ngForm" (ngSubmit)="submitForm()" class="space-y-3"  method="post">
 
 
+
+  <div *ngIf="type == 'sales'">
+    <label for="product" class="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300">Product</label>
+
+    <select class="bg-gray-50 border border-gray-300 mb-2 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white" [(ngModel)]="prodId"   name="product" id="product" required>
+      <option value="" disabled selected >select product</option>
+
+      <option *ngFor="let item of product;" value="{{item.id}}">{{item.name}} (${{item.price}})</option>
+    </select>
+
+
+
+
+    <label for="sale_price" class="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300">Sales Price</label>
+   <input ngModel  [(ngModel)]="price"  type="number" name="sales" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white"  required>
+
+
+  </div>
+
+
+
+
+
   <div *ngIf="type == 'customer'">
-    <label for="first_name" class="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300">First Name</label>
-<input ngModel  [(ngModel)]="firstName"  type="text" name="first_name" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white"  required>
+  <label for="first_name" class="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300">First Name</label>
+  <input ngModel  [(ngModel)]="firstName"  type="text" name="first_name" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white"  required>
+
+
 
 <label for="last_name" class="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300">Last Name</label>
-<input ngModel  [(ngModel)]="lastName"  type="text" name="first_name" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white"  required>
+<input ngModel  [(ngModel)]="lastName"  type="text" name="last_name" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white"  required>
 
 </div>
 
@@ -36,8 +61,8 @@
 
     <div *ngIf="type == 'product'">
         <label for="name" class="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300">Category Id</label>
-       
-      
+
+
         <select class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white" [(ngModel)]="categoryId"   name="category" id="category" required>
           <option value="" disabled selected >select category</option>
 
@@ -77,8 +102,8 @@
         <input ngModel  [(ngModel)]="image"  type="text" name="image" id="image" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white"  required>
     </div>
 
-    
-    
+
+
 
         <div *ngIf="type == 'product'">
             <label for="image" class="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300">Price</label>
@@ -88,7 +113,7 @@
         <input ngModel  [(ngModel)]="quantity"  type="number" name="quantity" id="quantity" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white"  required>
         </div>
 
-        
+
 
     <div class="mt-1 text-sm text-gray-500  dark:text-gray-300" id="user_avatar_help">Used For Category Thumbnail</div>
 
@@ -105,7 +130,7 @@
 
 
         </div>
-       
+
       </div>
     </div>
   </div>

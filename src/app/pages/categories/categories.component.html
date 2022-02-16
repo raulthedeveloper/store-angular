@@ -1,5 +1,5 @@
-<app-post-modal (onAddCategory)="addCategory($event)" type="category" [edit]="false" title="Create Category"></app-post-modal>
+<app-post-modal (onAddCategory)="addCategory($event)" type="category" title="Create Category"></app-post-modal>
 
-<app-table [data]="category" ></app-table>
+<app-table (onDelete)="deleteCategory($event)" [data]="category" ></app-table>
 
- 
+

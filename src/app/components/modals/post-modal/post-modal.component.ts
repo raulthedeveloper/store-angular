@@ -1,6 +1,7 @@
 import { Component, OnInit, Output, EventEmitter, Input } from '@angular/core';
 import { Category, Product, Customer, Sale, UnitedStates } from 'src/app/DataInterfaces';
 import { GetService } from "../../../services/get/get.service"
+import {StateSharingService} from "../../../services/state-sharing.service"
 
 
 interface category{
@@ -22,10 +23,10 @@ interface product{
 @Component({
   selector: 'app-post-modal',
   templateUrl: './post-modal.component.html',
-  
+
 })
 export class PostModalComponent   {
-  constructor(private getService: GetService){}
+  constructor(private getService: GetService,private stateSharing:StateSharingService){}
 @Output() onAddCategory: EventEmitter<Category> = new EventEmitter();
 @Output() onAddProduct: EventEmitter<Product> = new EventEmitter();
 @Output() onAddCustomer: EventEmitter<Customer> = new EventEmitter();
@@ -34,8 +35,9 @@ export class PostModalComponent   {
 
 
 
-  
+
   categoryId:any;
+  prodId:any;
   firstName:string | undefined;
   lastName:string | undefined;
 
@@ -52,39 +54,48 @@ export class PostModalComponent   {
 
   unitedState:UnitedStates[] | undefined
 
- 
+  @Input() product:Product[] | undefined;
+
   @Input() category:Category[] | undefined;
+
   @Input() title: string | undefined;
   @Input() type: string | undefined;
-  @Input() edit: boolean | undefined;
+  edit: boolean | undefined;
 
+  editData: any | undefined
 
   showModal:boolean = false;
 
 
   ngOnInit(): void {
-    
+
+
+    this.stateSharing.currentToggle.subscribe(toggle => this.showModal = toggle)
+    this.stateSharing.currentEdit.subscribe(edit => this.edit = edit)
      this.getService.getUnitedState().subscribe((data) =>(this.unitedState = data))
 
+     this.stateSharing.currentData.subscribe(data => this.editData = data)
+
+
+
   }
+
+
+
+
 
   toggleModal():void{
     this.showModal = !this.showModal;
-    
+    this.edit = false;
 
 
-    
+
   }
 
- 
+
 
   submitForm():void{
 
-    
-    // Prevent empty fields
-    
-
-   
 
     switch(this.type){
       case "product":
@@ -103,11 +114,11 @@ export class PostModalComponent   {
           name: this.name,
           description:this.description,
           image: this.image
-          
+
         }
         this.onAddCategory.emit(newCategory)
         break;
-      
+
       case "customer":
         const newCustomer:Customer = {
           first_name:this.firstName,
@@ -126,14 +137,23 @@ export class PostModalComponent   {
             console.log(newLocation)
              this.onAddLocation.emit(newLocation)
               break;
-        
+
+              case "sales":
+                const newSale:any = {
+                  prodId:Number(this.prodId),
+                  price:Number(this.price)
+
+                }
+                 this.onAddSale.emit(newSale)
+                  break;
+
     }
-    
 
-    
 
-    
-    
+
+
+
+
   }
 
   clearFields():void{
@@ -146,5 +166,5 @@ export class PostModalComponent   {
     this.quantity =""
   }
 
-  
+
 }

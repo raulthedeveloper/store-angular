@@ -11,7 +11,7 @@ import { PostService } from 'src/app/services/post/post.service';
 export class AdminCustomersComponent implements OnInit {
 
   data:any[] = [];
-  
+
 
   constructor(private getService:GetService, private postService:PostService) { }
 
@@ -19,15 +19,13 @@ export class AdminCustomersComponent implements OnInit {
     this.getService.getCustomers().subscribe((customers) =>(this.data = customers))
   }
 
-  ngAfterContentChecked(){
-    console.log(this.data)
-  }
+ 
 
   addCustomer(customers:Customer){
     this.postService.addCustomer(customers).subscribe(() => (this.ngOnInit()))
-    
-    
+
+
   }
- 
+
 
 }
