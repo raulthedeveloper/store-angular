@@ -23,16 +23,12 @@ export class CategoriesComponent implements OnInit {
 
 
   addCategory(category:Category){
-    this.postService.addCategory(category).subscribe(() => (this.ngOnInit()))
-
-
+    this.postService.addCategory(category).subscribe( () =>(this.ngOnInit()))
   }
 
   deleteCategory(id:number){
     this.deleteService.deleteCategory(id).subscribe();
   }
 
-  refreshList(): void {
-    this.getService.getCategories().subscribe(() =>(this.ngOnInit()));
-  }
+
 }

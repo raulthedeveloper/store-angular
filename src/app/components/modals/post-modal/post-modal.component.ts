@@ -1,23 +1,11 @@
-import { Component, OnInit, Output, EventEmitter, Input } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter, Input,ChangeDetectorRef } from '@angular/core';
 import { Category, Product, Customer, Sale, UnitedStates } from 'src/app/DataInterfaces';
+import { PutService } from 'src/app/services/put/put.service';
 import { GetService } from "../../../services/get/get.service"
 import {StateSharingService} from "../../../services/state-sharing.service"
 
 
-interface category{
-  name:string,
-  description:string,
-  image:string
-}
 
-interface product{
-  catId:any,
-  name:string,
-  description:string,
-  image:string,
-  price:any,
-  quantity:number
-}
 
 
 @Component({
@@ -26,14 +14,14 @@ interface product{
 
 })
 export class PostModalComponent   {
-  constructor(private getService: GetService,private stateSharing:StateSharingService){}
+  constructor(private cdr: ChangeDetectorRef,private getService: GetService,private stateSharing:StateSharingService, private putService: PutService){}
 @Output() onAddCategory: EventEmitter<Category> = new EventEmitter();
 @Output() onAddProduct: EventEmitter<Product> = new EventEmitter();
 @Output() onAddCustomer: EventEmitter<Customer> = new EventEmitter();
 @Output() onAddSale: EventEmitter<Sale> = new EventEmitter();
 @Output() onAddLocation: EventEmitter<Location> = new EventEmitter();
 
-
+  id:number | string | undefined;
 
 
   categoryId:any;
@@ -60,21 +48,27 @@ export class PostModalComponent   {
 
   @Input() title: string | undefined;
   @Input() type: string | undefined;
+
+
+
   edit: boolean | undefined;
 
-  editData: any | undefined
+
+  editData: any;
 
   showModal:boolean = false;
 
 
+
   ngOnInit(): void {
 
-
+    // Toggles edit (boolean) for layout use
     this.stateSharing.currentToggle.subscribe(toggle => this.showModal = toggle)
-    this.stateSharing.currentEdit.subscribe(edit => this.edit = edit)
-     this.getService.getUnitedState().subscribe((data) =>(this.unitedState = data))
 
-     this.stateSharing.currentData.subscribe(data => this.editData = data)
+      //
+    this.stateSharing.currentEdit.subscribe(edit => this.edit = edit)
+
+     this.getService.getUnitedState().subscribe((data) =>(this.unitedState = data))
 
 
 
@@ -82,6 +76,55 @@ export class PostModalComponent   {
 
 
 
+  ngAfterViewInit(){
+    this.cdr.detectChanges();
+
+
+  this.stateSharing.currentData.subscribe(data => {
+    if(this.edit){
+      switch(this.type){
+        case 'category':
+          this.id = Number(data.id);
+          this.name = data.name;
+          this.description = data.description;
+          break;
+         case 'sales':
+           this.id = Number(data.id);
+           this.prodId = data.prodId;
+           this.price = data.price;
+          break;
+          case 'customer':
+            this.id = Number(data.id);
+           this.firstName = data.first_name;
+           this.lastName = data.last_name;
+          break;
+          case 'location':
+            //Uses Id instead of id because of api
+           this.id = Number(data.Id);
+           this.address = data.address
+           this.city = data.city
+           this.state = data.state
+           this.postalCode =  data.postalCode
+          break;
+          case 'product':
+           this.id = Number(data.id);
+           this.categoryId = data.catId;
+           this.name = data.name;
+           this.description = data.description;
+           this.price = data.price;
+           this.image = data.image;
+           this.quantity = data.quantity;
+          break;
+      }
+    }
+
+
+
+
+
+
+  })
+  }
 
 
   toggleModal():void{
@@ -90,7 +133,16 @@ export class PostModalComponent   {
 
 
 
+
   }
+
+  closeModal():void{
+    this.showModal = false;
+    this.edit = false;
+    this.clearFields();
+  }
+
+
 
 
 
@@ -107,7 +159,7 @@ export class PostModalComponent   {
           price: parseInt(this.price),
           quantity:parseInt(this.quantity)
         }
-        this.onAddProduct.emit(newProduct);
+        this.edit ? this.putService.editProduct(Number(this.id),newProduct).subscribe(() => console.log('I can update')) : this.onAddProduct.emit(newProduct);
         break;
       case "category":
         const newCategory:any = {
@@ -116,7 +168,7 @@ export class PostModalComponent   {
           image: this.image
 
         }
-        this.onAddCategory.emit(newCategory)
+        this.edit ? this.putService.editCategory(Number(this.id),newCategory).subscribe() : this.onAddCategory.emit(newCategory)
         break;
 
       case "customer":
@@ -124,7 +176,7 @@ export class PostModalComponent   {
           first_name:this.firstName,
           last_name:this.lastName
         }
-        this.onAddCustomer.emit(newCustomer)
+        this.edit ? this.putService.editCustomer(Number(this.id),newCustomer).subscribe() : this.onAddCustomer.emit(newCustomer)
           break;
 
           case "location":
@@ -134,8 +186,7 @@ export class PostModalComponent   {
               state:this.state,
               postalCode:Number(this.postalCode)
             }
-            console.log(newLocation)
-             this.onAddLocation.emit(newLocation)
+            this.edit ? this.putService.editLocation(Number(this.id),newLocation).subscribe() :this.onAddLocation.emit(newLocation)
               break;
 
               case "sales":
@@ -144,26 +195,31 @@ export class PostModalComponent   {
                   price:Number(this.price)
 
                 }
-                 this.onAddSale.emit(newSale)
+                this.edit ? this.putService.editSale(Number(this.id),newSale).subscribe() :this.onAddSale.emit(newSale)
                   break;
 
     }
 
 
 
-
+    this.closeModal();
 
 
   }
 
+
+
+
   clearFields():void{
+    this.categoryId = null
+    this.prodId = null;
     this.firstName=""
     this.lastName=""
     this.name=""
     this.description=""
     this.image=""
-    this.price=""
-    this.quantity =""
+    this.price= null
+    this.quantity = null
   }
 
 

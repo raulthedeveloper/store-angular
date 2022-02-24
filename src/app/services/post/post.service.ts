@@ -14,7 +14,7 @@ export class PostService {
   constructor(private http:HttpClient) { }
 
 
-  addCategory(category: Category):Observable<Category>{
+  addCategory(category:Category):Observable<Category>{
     return this.http.post<Category>(url.apiUrlCategories, category, httpOptions)
   }
 
@@ -35,5 +35,5 @@ export class PostService {
 
     return this.http.post<Location>(url.apiUrlLocation, data, httpOptions)
   }
-  
+
 }

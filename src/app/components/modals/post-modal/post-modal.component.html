@@ -22,6 +22,7 @@
 
 <form #postForm="ngForm" (ngSubmit)="submitForm()" class="space-y-3"  method="post">
 
+<input *ngIf="edit" type="text" name="id" ngModel [(ngModel)]="id" hidden>
 
 
   <div *ngIf="type == 'sales'">
@@ -72,10 +73,10 @@
 
     <div *ngIf="type == 'location'">
       <label for="name" class="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300">Address</label>
-      <input  ngModel [(ngModel)]="address"  type="text" name="name" id="name" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white"  required>
+      <input  ngModel [(ngModel)]="address"  type="text" name="address" id="name" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white"  required>
 
       <label for="name" class="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300">City</label>
-      <input  ngModel [(ngModel)]="city"  type="text" name="name" id="name" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white"  required>
+      <input  ngModel [(ngModel)]="city"  type="text" name="city" id="name" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white"  required>
 
       <label for="name" class="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300">State</label>
       <select class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white" [(ngModel)]="state"   name="category" id="category" required>
@@ -98,20 +99,26 @@
 
         <input ngModel  [(ngModel)]="description"  type="text" name="description" id="description" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white"  required>
 
-        <label for="image" class="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300">Image Url</label>
-        <input ngModel  [(ngModel)]="image"  type="text" name="image" id="image" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white"  required>
+        <div>
+          <label for="image" class="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300">Image Url</label>
+          <input ngModel  [(ngModel)]="image"  type="text" name="image" id="image" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white"  required>
+        </div>
+
+
+
+    </div>
+
+    <div *ngIf="type == 'product'">
+      <label for="price" class="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300">Price</label>
+        <input ngModel  [(ngModel)]="price"  type="number" name="price" id="price" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white"  required>
+
+        <label for="image" class="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300">Quantity</label>
+        <input ngModel  [(ngModel)]="quantity"  type="number" name="quantity" id="quantity" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white"  required>
     </div>
 
 
 
 
-        <div *ngIf="type == 'product'">
-            <label for="image" class="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300">Price</label>
-        <input ngModel  [(ngModel)]="price"  type="number" name="image" id="image" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white"  required>
-
-        <label for="image" class="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300">Quantity</label>
-        <input ngModel  [(ngModel)]="quantity"  type="number" name="quantity" id="quantity" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white"  required>
-        </div>
 
 
 
@@ -119,7 +126,7 @@
 
     <div class="flex items-center justify-end pt-6  border-t border-solid border-blueGray-200 rounded-b">
     <button class="bg-blue-500 active:bg-blue-700 p-2 text-white rounded shadow hover:shadow-lg outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150">submit</button>
-    <button class="text-red-500 background-transparent font-bold uppercase px-6 py-2 text-sm outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150" type="button" (click)="toggleModal()">
+    <button class="text-red-500 background-transparent font-bold uppercase px-6 py-2 text-sm outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150" type="button" (click)="closeModal()">
         Close
       </button>
     </div>

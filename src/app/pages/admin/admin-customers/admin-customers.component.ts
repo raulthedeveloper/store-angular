@@ -11,19 +11,19 @@ import { PostService } from 'src/app/services/post/post.service';
 export class AdminCustomersComponent implements OnInit {
 
   data:any[] = [];
-
+  refreshTable:any
 
   constructor(private getService:GetService, private postService:PostService) { }
 
   ngOnInit(): void {
     this.getService.getCustomers().subscribe((customers) =>(this.data = customers))
+
   }
 
- 
+
 
   addCustomer(customers:Customer){
     this.postService.addCustomer(customers).subscribe(() => (this.ngOnInit()))
-
 
   }
 

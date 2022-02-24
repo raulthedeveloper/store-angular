@@ -3,6 +3,7 @@ import { Product,Category } from 'src/app/DataInterfaces';
 import { GetService } from 'src/app/services/get/get.service';
 import { PostService } from 'src/app/services/post/post.service';
 import { DeleteService } from 'src/app/services/delete/delete.service';
+import { PutService } from 'src/app/services/put/put.service';
 
 
 @Component({
@@ -15,7 +16,7 @@ export class ProductsComponent implements OnInit {
   products:Product[] = [];
   category:Category[] = [];
 
-  constructor(private getService: GetService, private postService: PostService, private deleteService: DeleteService) { }
+  constructor(private getService: GetService, private postService: PostService, private deleteService: DeleteService, private putService:PutService) { }
 
   ngOnInit(): void {
    this.getService.getProducts().subscribe((product) =>(this.products = product));
@@ -27,8 +28,9 @@ export class ProductsComponent implements OnInit {
     this.getService.getProducts().subscribe(() =>(this.ngOnInit()));
   }
 
+ 
+
   addProduct(product:Product){
-    console.log(product);
     this.postService.addProduct(product).subscribe(() => (this.ngOnInit()))
   }
 

@@ -24,6 +24,7 @@ export interface Category {
 export interface Sale {
     id?:number,
     prodId:number,
+    name:string,
     price:number
 }
 
@@ -41,7 +42,7 @@ export interface Cart {
 }
 
 export interface Location {
-    id?:number,
+    id:number,
     address:string,
     city:string,
     state:string,
@@ -71,4 +72,4 @@ export interface ProductByCat{
     quantity: number
 }
 
-    
+

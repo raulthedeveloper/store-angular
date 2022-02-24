@@ -15,23 +15,28 @@ export class PutService {
 
 
   editProduct(id:number,data:Product):Observable<Product>{
-    return this.http.put<Product>(`${url.apiUrlCategories}/${id}`,data,httpOptions)
+    data.id = id;
+    return this.http.put<Product>(`${url.apiUrlProducts}/${id}`,data,httpOptions)
   }
 
   editCategory(id:number,data:Category):Observable<Category>{
+    data.id = id;
     return this.http.put<Category>(`${url.apiUrlCategories}/${id}`,data,httpOptions)
   }
 
   editSale(id:number,data:Sale):Observable<Sale>{
+    data.id = id;
     return this.http.put<Sale>(`${url.apiUrlSales}/${id}`,data,httpOptions)
   }
 
   editCustomer(id:number,data:Customer):Observable<Customer>{
+    data.id = id;
     return this.http.put<Customer>(`${url.apiUrlCustomers}/${id}`,data,httpOptions)
   }
 
-  editLocation(id:number,data:Location):Observable<Location>{
-    return this.http.put<Location>(`${url.apiUrlLocation}/${id}`,data,httpOptions)
+  editLocation(id:number,data:any):Observable<Location>{
+    data.Id = id;
+    return this.http.put<Location>(`${url.apiUrlLocation}/${id}`,data)
   }
 
 }

@@ -20,8 +20,7 @@ export class AdminLocationsComponent implements OnInit {
   }
 
   addLocation(data:Location){
-    this.postService.addLocation(data).subscribe()
-    this.getService.getLocations().subscribe((locations) =>(this.data = locations))
+    this.postService.addLocation(data).subscribe(() =>(this.ngOnInit()))
 
   }
 
