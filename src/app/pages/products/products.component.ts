@@ -24,11 +24,14 @@ export class ProductsComponent implements OnInit {
 
   }
 
-  refreshList(): void {
-    this.getService.getProducts().subscribe(() =>(this.ngOnInit()));
+  // refreshList(): void {
+  //   this.getService.getProducts().subscribe(() =>(this.ngOnInit()));
+  // }
+
+  refreshTable(){
+    this.ngOnInit();
   }
 
- 
 
   addProduct(product:Product){
     this.postService.addProduct(product).subscribe(() => (this.ngOnInit()))

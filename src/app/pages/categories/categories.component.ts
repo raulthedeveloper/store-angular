@@ -20,6 +20,9 @@ export class CategoriesComponent implements OnInit {
     this.getService.getCategories().subscribe((category) =>(this.category = category));
   }
 
+  refreshTable(){
+    this.ngOnInit();
+  }
 
 
   addCategory(category:Category){

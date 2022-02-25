@@ -93,7 +93,6 @@ export class TableComponent implements OnInit {
 
    edit(id:number){
 
-    this.onAddCustomer();
     // Activate modal with values
     this.stateSharing.toggleModal(true,true)
 

@@ -11,7 +11,6 @@ import { PostService } from 'src/app/services/post/post.service';
 export class AdminCustomersComponent implements OnInit {
 
   data:any[] = [];
-  refreshTable:any
 
   constructor(private getService:GetService, private postService:PostService) { }
 
@@ -20,6 +19,9 @@ export class AdminCustomersComponent implements OnInit {
 
   }
 
+  refreshTable(){
+    this.ngOnInit();
+  }
 
 
   addCustomer(customers:Customer){

@@ -12,4 +12,9 @@ export class LocationsComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  refreshTable(){
+    this.ngOnInit();
+  }
+
+
 }

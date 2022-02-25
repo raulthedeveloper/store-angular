@@ -26,7 +26,10 @@ export class AdminSalesComponent implements OnInit {
     this.deleteService.deleteSale(id).subscribe();
   }
 
-  
+  refreshTable(){
+    this.ngOnInit();
+  }
+
 
   addSale(sale:Sale){
     this.postService.addSales(sale).subscribe(() => (this.ngOnInit()))

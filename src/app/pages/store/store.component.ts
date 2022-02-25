@@ -20,5 +20,10 @@ export class StoreComponent implements OnInit {
 
   }
 
+  refreshTable(){
+    this.ngOnInit();
+  }
+
+
 
 }

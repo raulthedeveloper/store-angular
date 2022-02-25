@@ -22,12 +22,14 @@ export class StoreCategoryComponent implements OnInit {
     this.getService.getProductsByCat(Number(this.route.snapshot.paramMap.get('category'))).subscribe((product) =>(this.products = product));
 
     this.categoryRoute = this.route.snapshot.paramMap.get('category');
-    
+
   }
 
- 
-    
+
   
+
+
+
 
 
 }

@@ -1,7 +1,6 @@
 
-<app-post-modal (onAddProduct)="addProduct($event)" [category]="category" type="product"  title="Create Product"></app-post-modal>
+<app-post-modal (onRefreshTable)="refreshTable()" (onAddProduct)="addProduct($event)" [category]="category" type="product"  title="Create Product"></app-post-modal>
 
-<!-- <app-products-table (onRefreshList)="refreshList()"  [products] = "products"></app-products-table> -->
 
 <app-table (onDelete)="deleteProduct($event)" [data]="products" ></app-table>
 

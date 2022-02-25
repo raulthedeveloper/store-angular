@@ -1,2 +1,2 @@
-<app-post-modal (onAddSale)="addSale($event)" title="Product Sale" [product]="product" type="sales"></app-post-modal>
+<app-post-modal (onRefreshTable)="refreshTable()" (onAddSale)="addSale($event)" title="Product Sale" [product]="product" type="sales"></app-post-modal>
 <app-table (onDelete)="deleteSale($event)" [data]="data" ></app-table>

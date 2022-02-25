@@ -23,6 +23,10 @@ export class AdminLocationsComponent implements OnInit {
     this.postService.addLocation(data).subscribe(() =>(this.ngOnInit()))
 
   }
+  refreshTable(){
+    this.ngOnInit();
+  }
+
 
   deleteLocation(id:number){
     this.deleteService.deleteLocation(id).subscribe();

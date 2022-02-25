@@ -21,6 +21,8 @@ export class PostModalComponent   {
 @Output() onAddSale: EventEmitter<Sale> = new EventEmitter();
 @Output() onAddLocation: EventEmitter<Location> = new EventEmitter();
 
+@Output() onRefreshTable: EventEmitter<any> = new EventEmitter();
+
   id:number | string | undefined;
 
 
@@ -159,7 +161,7 @@ export class PostModalComponent   {
           price: parseInt(this.price),
           quantity:parseInt(this.quantity)
         }
-        this.edit ? this.putService.editProduct(Number(this.id),newProduct).subscribe(() => console.log('I can update')) : this.onAddProduct.emit(newProduct);
+        this.edit ? this.putService.editProduct(Number(this.id),newProduct).subscribe(() => this.onRefreshTable.emit()) : this.onAddProduct.emit(newProduct);
         break;
       case "category":
         const newCategory:any = {
@@ -168,7 +170,7 @@ export class PostModalComponent   {
           image: this.image
 
         }
-        this.edit ? this.putService.editCategory(Number(this.id),newCategory).subscribe() : this.onAddCategory.emit(newCategory)
+        this.edit ? this.putService.editCategory(Number(this.id),newCategory).subscribe(() => this.onRefreshTable.emit()) : this.onAddCategory.emit(newCategory)
         break;
 
       case "customer":
@@ -176,7 +178,7 @@ export class PostModalComponent   {
           first_name:this.firstName,
           last_name:this.lastName
         }
-        this.edit ? this.putService.editCustomer(Number(this.id),newCustomer).subscribe() : this.onAddCustomer.emit(newCustomer)
+        this.edit ? this.putService.editCustomer(Number(this.id),newCustomer).subscribe(() => this.onRefreshTable.emit()) : this.onAddCustomer.emit(newCustomer)
           break;
 
           case "location":
@@ -186,7 +188,7 @@ export class PostModalComponent   {
               state:this.state,
               postalCode:Number(this.postalCode)
             }
-            this.edit ? this.putService.editLocation(Number(this.id),newLocation).subscribe() :this.onAddLocation.emit(newLocation)
+            this.edit ? this.putService.editLocation(Number(this.id),newLocation).subscribe(() => this.onRefreshTable.emit()) :this.onAddLocation.emit(newLocation)
               break;
 
               case "sales":
@@ -195,7 +197,7 @@ export class PostModalComponent   {
                   price:Number(this.price)
 
                 }
-                this.edit ? this.putService.editSale(Number(this.id),newSale).subscribe() :this.onAddSale.emit(newSale)
+                this.edit ? this.putService.editSale(Number(this.id),newSale).subscribe(() => this.onRefreshTable.emit()) :this.onAddSale.emit(newSale)
                   break;
 
     }
