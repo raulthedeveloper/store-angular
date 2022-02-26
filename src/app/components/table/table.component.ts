@@ -93,6 +93,7 @@ export class TableComponent implements OnInit {
 
    edit(id:number){
 
+
     // Activate modal with values
     this.stateSharing.toggleModal(true,true)
 
@@ -107,6 +108,7 @@ export class TableComponent implements OnInit {
 
       if(this.currentRoute == "/admin-categories" || this.currentRoute == "/admin-products"){
         e.image = this.images[index]
+       
       }
 
       if(e.id == id || e.Id == id || e.ID == id){

@@ -13,8 +13,6 @@ export class StateSharingService {
 
   private editData = new BehaviorSubject<any>({});
 
-  private tableRefresh = new BehaviorSubject<any>(Function)
-
 
   currentEdit = this.edit.asObservable();
 
@@ -22,7 +20,6 @@ export class StateSharingService {
 
   currentToggle = this.toggle.asObservable();
   currentData = this.editData.asObservable();
-  currentTable = this.tableRefresh.asObservable();
 
 
 
@@ -38,10 +35,6 @@ export class StateSharingService {
     this.editData.next(data)
   }
 
-  refreshTable(callback:any){
-    this.tableRefresh.next(callback)
-    
-  }
-
+  
 
 }
