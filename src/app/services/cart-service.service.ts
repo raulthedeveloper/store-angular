@@ -10,22 +10,42 @@ export class CartServiceService {
 
   constructor() { }
 
-  
+
   cartData:any = []
 
   addToCart(item:any){
 
-    this.cartData.push(item)
+    if(!this.checkforDuplicates(item)){
+      item.total = Number(item.price);
+      this.cartData.push(item)
 
-    this.copyTo()
+      this.copyTo()
+    }
+    else{
+      // This is where we add to the quantity
+      this.cartData.forEach((element:any) => {
+        if(element.prodId == item.prodId){
+
+          element.quantity += 1;
+          element.total += Number(item.price)
+        }
+
+        this.copyTo()
+      });
+    }
+
+  }
+
+  checkforDuplicates(item:any):boolean{
+    return this.cartData.some((obj:any) => obj.prodId === item.prodId)
   }
 
 
   updateFromCart(data:any)
   {
-    console.log("cart data updated")
-    this.cartData = data
 
+    localStorage.setItem('cart', JSON.stringify(data))
+    this.loadCartData()
   }
 
 

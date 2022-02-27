@@ -16,19 +16,16 @@ export class CartComponent implements OnInit {
     this.cartContents = this.cartService.cartData
     this.grossTotal();
 
-    this.setTotalProperty();
+
 
   }
 
 
   ngOnChange():void{
+
   }
 
-  setTotalProperty(){
-    this.cartContents.forEach((element:any) => {
-      element.total = element.price;
-    });
-  }
+ 
 
   incrementQuantity(id:number){
 
@@ -41,6 +38,8 @@ export class CartComponent implements OnInit {
 
        this.singleItemTotal(this.cartContents[index],this.cartContents[index].quantity,this.cartContents[index].price)
 
+       this.cartService.updateFromCart(this.cartContents);
+
   }
 
   decrementQuantity(id:number){
@@ -52,29 +51,28 @@ export class CartComponent implements OnInit {
      }
 
      this.singleItemTotal(this.cartContents[index],this.cartContents[index].quantity,this.cartContents[index].price)
-
+    this.cartService.updateFromCart(this.cartContents);
   }
 
   removeItem(id:number){
+    let total = this.grossTotal();
     let index = this.cartContents.findIndex((o:any) => {
       return id == o.prodId ;
      })
 
      if(index !== -1) {
+      total - Number(this.cartContents[index].total)
        this.cartContents.splice(index,1)
      }
+     this.cartService.updateFromCart(this.cartContents);
+
   }
 
-  updateCart(){
-    // add an Observable method from update to manage changes
-    this.cartService.updateFromCart(this.cartContents);
-  }
 
 
 
   singleItemTotal(item:any,quantity:number,price:number){
     item.total = quantity * price
-    console.log(item);
   }
 
   numberOfItems(){
