@@ -27,7 +27,7 @@ export class ProductCardComponent implements OnInit {
   }
 
   addToCart(){
-    this.cartServices.addToCart({userId:1,prodId:this.id,name:this.name,image:this.image,price:this.price,quantity:1})
+    this.cartServices.addToCart({custId:1,prodId:this.id,name:this.name,image:this.image,price:this.price,quantity:1})
     alert(`${this.name} was added to cart`)
   }
 

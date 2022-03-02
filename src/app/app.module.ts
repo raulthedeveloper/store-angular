@@ -3,7 +3,7 @@ import { LayoutModule } from './layout/layout.module';
 import { FormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
 import {HttpClient, HttpClientModule} from '@angular/common/http';
-import {RouterModule, Routes} from '@angular/router'; 
+import {RouterModule, Routes} from '@angular/router';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { NavbarComponent } from './components/layout/navbar/navbar.component';
@@ -35,6 +35,7 @@ import { ListComponent } from './components/layout/list/list.component';
 import { AdminLocationsComponent } from './pages/admin/admin-locations/admin-locations.component';
 import { MiniCategorySelectorComponent } from './components/category/mini-category-selector/mini-category-selector.component';
 import { NotFoundComponent } from './layout/not-found/not-found.component';
+import { OrderSummaryComponent } from './pages/order-summary/order-summary.component';
 
 const appRoutes: Routes = [
   {path:"", component:HomeComponent},
@@ -48,6 +49,7 @@ const appRoutes: Routes = [
   {path:"admin-customers",component:AdminCustomersComponent},
   {path:"admin-sales",component:AdminSalesComponent},
   {path:"admin-locations",component:AdminLocationsComponent},
+  {path:"order-summary/:id",component:OrderSummaryComponent},
   {path:"**", component:NotFoundComponent}
 ]
 
@@ -82,7 +84,8 @@ const appRoutes: Routes = [
     ListComponent,
     AdminLocationsComponent,
     MiniCategorySelectorComponent,
- 
+    OrderSummaryComponent,
+
   ],
   imports: [
     BrowserModule,

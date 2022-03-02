@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import {Observable,of} from 'rxjs';
 import {HttpClient} from '@angular/common/http'
-import {Product,Category, Customer,Sale} from "../../DataInterfaces";
+import {Product,Category, Customer,Sale, Cart} from "../../DataInterfaces";
 import { url, httpOptions } from '../ServiceUtils';
 
 
@@ -34,6 +34,12 @@ export class PostService {
   addLocation(data: Location):Observable<Location>{
 
     return this.http.post<Location>(url.apiUrlLocation, data, httpOptions)
+  }
+
+
+  addCart(data: Cart[]):Observable<Cart[]>{
+
+    return this.http.post<Cart[]>(url.apiUrlCarts, data, httpOptions)
   }
 
 }
