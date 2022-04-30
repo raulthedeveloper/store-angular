@@ -10,12 +10,13 @@ import { GetService } from 'src/app/services/get/get.service';
   styleUrls: ['./store.component.scss']
 })
 export class StoreComponent implements OnInit {
-  products:Product[] = [];
+  products:any[] = [];
   category:Category[] = [];
   constructor(private route:ActivatedRoute, private getService: GetService) { }
 
   ngOnInit(): void {
-    this.getService.getProducts().subscribe((product) =>(this.products = product));
+    this.getService.getStore().subscribe((store) => (this.products = store))
+    // this.getService.getProducts().subscribe((product) =>(this.products = product));
     this.getService.getCategories().subscribe((category) =>(this.category = category));
 
   }

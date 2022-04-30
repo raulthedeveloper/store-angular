@@ -7,13 +7,16 @@ import { Product } from 'src/app/DataInterfaces';
   styleUrls: ['./store-ui.component.scss']
 })
 export class StoreUiComponent implements OnInit {
- @Input() products:Product[] = []
+ @Input() products:any[] = []
+ @Input() categories:any[] = []
  @Input() title:string | undefined;
+ @Input() CategoryPage:boolean | undefined;
 
   constructor() { }
 
   ngOnInit(): void {
-   
   }
+
+
 
 }

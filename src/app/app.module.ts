@@ -36,6 +36,12 @@ import { AdminLocationsComponent } from './pages/admin/admin-locations/admin-loc
 import { MiniCategorySelectorComponent } from './components/category/mini-category-selector/mini-category-selector.component';
 import { NotFoundComponent } from './layout/not-found/not-found.component';
 import { OrderSummaryComponent } from './pages/order-summary/order-summary.component';
+import { AdminSalesReportComponent } from './pages/admin/admin-sales-report/admin-sales-report.component';
+import { LoginFormComponent } from './components/login-form/login-form.component';
+import { LoginComponent } from './pages/login/login.component';
+import { CustomerDropdownComponent } from './components/layout/customer-dropdown/customer-dropdown.component';
+import { PurchaseHistoryComponent } from './pages/customer/purchase-history/purchase-history.component';
+import { CategoryDropdownComponent } from './components/layout/category-dropdown/category-dropdown.component';
 
 const appRoutes: Routes = [
   {path:"", component:HomeComponent},
@@ -50,6 +56,9 @@ const appRoutes: Routes = [
   {path:"admin-sales",component:AdminSalesComponent},
   {path:"admin-locations",component:AdminLocationsComponent},
   {path:"order-summary/:id",component:OrderSummaryComponent},
+  {path:"admin-sales-report",component:AdminSalesReportComponent},
+  {path:"login",component:LoginComponent},
+  {path:"purchase-history/:id",component:AdminSalesReportComponent},
   {path:"**", component:NotFoundComponent}
 ]
 
@@ -85,6 +94,12 @@ const appRoutes: Routes = [
     AdminLocationsComponent,
     MiniCategorySelectorComponent,
     OrderSummaryComponent,
+    AdminSalesReportComponent,
+    LoginFormComponent,
+    LoginComponent,
+    CustomerDropdownComponent,
+    PurchaseHistoryComponent,
+    CategoryDropdownComponent,
 
   ],
   imports: [

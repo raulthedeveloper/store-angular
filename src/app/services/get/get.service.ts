@@ -20,14 +20,14 @@ export class GetService {
   constructor(private http:HttpClient) { }
 
   getProducts():Observable<Product[]>{
-    
+
     if(environment.testApi){
        return of(Products);
     }
     else{
       return this.http.get<Product[]>(url.apiUrlProducts);
     }
-    
+
   }
 
   getProductById(id:number):Observable<Product>{
@@ -38,28 +38,32 @@ export class GetService {
     return this.http.get<ProductByCat[]>(url.apiUrlProductsByCat + id);
   }
 
+  getStore():Observable<any[]>{
+    return this.http.get<any[]>(url.apiUrlStore);
+  }
+
   getSales():Observable<Sale[]>{
-    
+
     if(environment.testApi){
        return of(Sales);
     }
     else{
       return this.http.get<Sale[]>(url.apiUrlSales);
     }
-    
+
   }
 
   getLocations():Observable<Location[]>{
-    
+
       return this.http.get<Location[]>(url.apiUrlLocation);
-    
+
   }
 
   getUnitedState():Observable<UnitedStates[]>{
-    
+
       return this.http.get<UnitedStates[]>(url.apiUrlUnitedStates);
-  
-    
+
+
   }
 
   getCategories():Observable<Category[]>{
@@ -69,7 +73,7 @@ export class GetService {
     else{
       return this.http.get<Category[]>(url.apiUrlCategories);
     }
-    
+
   }
 
   getCustomers():Observable<Customer[]>{

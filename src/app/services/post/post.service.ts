@@ -38,7 +38,7 @@ export class PostService {
 
 
   addCart(data: Cart[]):Observable<Cart[]>{
-
+    console.log(data)
     return this.http.post<Cart[]>(url.apiUrlCarts, data, httpOptions)
   }
 
